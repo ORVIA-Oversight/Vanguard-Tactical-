@@ -1,35 +1,32 @@
-# Vanguard Tactical
+# Vanguard Tactical Full-Stack Build
 
-Production-oriented first-pass marketing site and Team OS prototype for Vanguard Tactical.
+This package is the GitHub/Vercel build for Vanguard Tactical.
 
-## Stack
-- Next.js App Router
-- React
-- CSS only (no UI framework required)
-- Vercel-ready
+## Security release
 
-## Run locally
-```bash
-npm install
-npm run dev
-```
+The project is pinned to Next.js 16.3.6 and React 19.2.6 to replace the older Next.js 16.0.1 build that Vercel blocks as vulnerable.
 
-## Deploy
-1. Upload this project to a new GitHub repository.
-2. Import the repository into Vercel.
-3. Framework preset: Next.js.
-4. Deploy.
+## Public and protected areas
 
-No environment variables are required for this public prototype.
+Public website routes remain open to visitors. Team/customer application routes under `/app` are protected by Supabase Auth.
 
-## Before production launch
-- Replace demo Pexels photography with owned/commissioned Vanguard imagery if desired.
-- Connect `/login` to Supabase Auth.
-- Add Supabase/Postgres data model for organisations, teams, members, events, assets, bookings and actions.
-- Add Stripe only after the actual products/prices and compliance position are approved.
-- Add Vapi, DJI and mapping connectors as separate integrations; do not fake live status.
-- Add privacy, terms, cookie and data-protection pages before customer onboarding.
-- Validate all indicative pricing and hire economics.
+The backend is multi-tenant: Vanguard Tactical can operate 6 Troop / 7 Troop in its own organisation while customer organisations use separate workspaces. Row-level security in the included Supabase migration is intended to isolate each organisation's data.
 
-## Image credits used in prototype
-Free-to-use Pexels photography by GMB VISUALS and Kony Xyzx. The site footer flags these as prototype photography.
+## Supabase setup
+
+1. Create or select a Supabase project.
+2. Run `supabase/migrations/001_vanguard_core.sql` in the Supabase SQL editor (review before applying).
+3. In Vercel Project Settings > Environment Variables add:
+
+   - `NEXT_PUBLIC_SUPABASE_URL`
+   - `NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY`
+   - `NEXT_PUBLIC_SITE_URL` (for production use `https://vanguardtactical.co.uk` once live)
+
+4. In Supabase Auth URL configuration, add your production site URL and callback URL.
+5. Redeploy in Vercel.
+
+Never put a Supabase secret/service-role key in a `NEXT_PUBLIC_` variable.
+
+## GitHub upload
+
+Upload the contents of this folder to the existing `vanguard-tactical` repository root. Do not nest this folder inside another directory. Vercel should detect Next.js automatically.
