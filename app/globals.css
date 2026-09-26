@@ -10,3 +10,247 @@
 .hero-logo-lockup{width:min(420px,48vw);height:180px;margin:0 0 26px;background:url('https://raw.githubusercontent.com/ORVIA-Oversight/Vanguard-Tactical-/main/Vanguard%20Tactical%20Logo%202026.png') center left/contain no-repeat;filter:drop-shadow(0 16px 30px rgba(0,0,0,.35))}
 .footer-logo{width:64px;height:64px}
 @media(max-width:680px){.brand-logo{width:42px;height:42px}.hero-logo-lockup{width:240px;height:116px;margin-bottom:18px}}
+
+
+/* 2026 ACCESSIBILITY PASS — MULTICAM-INSPIRED COLOUR FAMILY
+   Uses coyote, sand, khaki, foliage and olive tones without a camouflage pattern.
+   Public reading surfaces are deliberately light/high-contrast. */
+:root{
+  --black:#d8cfb6;
+  --black2:#c9bea1;
+  --panel:#eee7d4;
+  --panel2:#ded4ba;
+  --ranger:#536141;
+  --ranger2:#3f4c34;
+  --olive:#65734f;
+  --khaki:#8c7757;
+  --stone:#332f25;
+  --bone:#f6f0df;
+  --signal:#9a5f2f;
+  --line:rgba(45,51,36,.24);
+  --muted:#5c5f52;
+  --white:#20251b;
+}
+
+html{font-size:17px}
+body{background:#d8cfb6;color:#20251b;line-height:1.6}
+p{color:#4d5247;font-size:1rem;line-height:1.72}
+h1,h2,h3,h4{color:#20251b}
+a:focus-visible,button:focus-visible,input:focus-visible{
+  outline:3px solid #b97335;
+  outline-offset:3px;
+}
+
+.site-header{
+  background:rgba(55,66,45,.97);
+  border-bottom-color:rgba(246,240,223,.32);
+  box-shadow:0 3px 18px rgba(35,39,28,.16);
+}
+.site-header .brand b,.site-header .desktop-nav a,.site-header .text-link{color:#fffaf0}
+.site-header .brand small{color:#ded0a9}
+.desktop-nav a,.text-link{font-size:12px}
+.desktop-nav a:hover,.text-link:hover{color:#f2d59d}
+
+.btn{
+  background:#4d5d3d;
+  border-color:#39472f;
+  color:#fff;
+  font-size:12px;
+  box-shadow:0 2px 0 rgba(31,37,25,.18);
+}
+.btn:hover{background:#65734f;color:#fff}
+.btn-ghost{
+  background:#eee7d4;
+  border-color:#65734f;
+  color:#2d3726;
+}
+.btn-ghost:hover{background:#d8cfb6;color:#20251b}
+
+.hero{background:#ded4ba}
+.hero:before{
+  background-image:linear-gradient(rgba(54,62,43,.045) 1px,transparent 1px),linear-gradient(90deg,rgba(54,62,43,.045) 1px,transparent 1px)
+}
+.hero-copy{background:linear-gradient(135deg,#eee7d4 0%,#ded4ba 100%)}
+.hero h1{color:#1e241b}
+.hero h1 em{color:#536141}
+.hero-copy>p{color:#42483d;font-size:20px}
+.kicker{color:#655537;font-size:11px}
+.kicker span{background:#9a5f2f}
+.hero-visual:after{
+  background:linear-gradient(90deg,#ded4ba 0%,rgba(222,212,186,.36) 24%,rgba(34,39,29,.03) 60%),
+             linear-gradient(0deg,rgba(44,52,36,.46) 0%,transparent 32%)
+}
+.hero-stamp{
+  background:rgba(40,48,33,.86);
+  border-color:rgba(246,240,223,.55);
+  color:#fffaf0
+}
+.hero-stamp small{color:#e4d7b8}
+.hero-stamp b{color:#fff}
+
+.metric-strip{background:#c9bea1}
+.metric b{color:#252b21}
+.metric span{color:#4f5648;font-size:11px}
+
+.section{background:#e7dfca}
+.section-dark{background:#c9bea1}
+.section-intro{color:#454b40}
+.product-card{
+  background:#f4eddb;
+  color:#20251b;
+  border-color:rgba(55,64,45,.18)
+}
+.product-card:hover{background:#fff8e7}
+.product-card p{color:#50564a}
+.product-icon{
+  border-color:#7b815f;
+  color:#4a583a;
+  background:#ddd1b4
+}
+.eyebrow{color:#576442;font-size:10px}
+.card-link{color:#554a32}
+.split{color:#20251b}
+.feature-list{border-color:rgba(45,51,36,.27)}
+.feature-row{border-color:rgba(45,51,36,.22)}
+.feature-row .num{color:#8b552c}
+.feature-row span:last-child{color:#555b4e}
+
+.band{background:#48563b;color:#fff}
+.band h2{color:#fff}
+.band .btn{background:#f5edd9;color:#263021;border-color:#f5edd9}
+
+.page-hero{background:#b8ad91}
+.page-hero-copy{background:#eee7d4}
+.page-hero-copy p{color:#484e43}
+.chip{
+  border-color:#76805f;
+  color:#30372b;
+  background:#d9ceb1;
+  font-size:10px
+}
+.content-card{
+  background:#f3ecd9;
+  border-color:rgba(45,51,36,.24);
+  box-shadow:0 7px 20px rgba(54,57,42,.06)
+}
+.content-card p{color:#50564a}
+.content-card .icon{color:#536141}
+
+.steps{background:#e5dcc5}
+.step{background:#f3ecd9}
+.step b{color:#8d592f}
+
+.price-card{
+  background:#f3ecd9;
+  border-color:rgba(45,51,36,.25)
+}
+.price-card.featured{
+  border:2px solid #596747;
+  background:#e2d8bd
+}
+.price small{color:#53584d}
+.price-card li{
+  color:#3f463a;
+  border-color:rgba(45,51,36,.18);
+  font-size:14px
+}
+.price-card li .icon{color:#526141}
+
+.workspace{
+  background:#d8cfb6;
+  color:#20251b
+}
+.sidebar,.dash-card{
+  border-color:rgba(45,51,36,.25);
+  background:#f2ead7
+}
+.sidebar a{
+  color:#3f463a;
+  border-bottom-color:rgba(45,51,36,.11);
+  font-size:13px
+}
+.sidebar a:first-of-type{
+  color:#fff;
+  background:#536141
+}
+.dash-number{color:#263022}
+.dash-label,.event-row small{color:#575d50}
+.progress{background:#c4baa0}
+.progress span{background:#65734f}
+
+.login-wrap{background:#d8cfb6}
+.login-box{
+  background:#eee7d4;
+  color:#20251b
+}
+.login-box h1{color:#20251b}
+.login-box p{color:#4c5246}
+.login-box input{
+  background:#fffaf0;
+  color:#1e241b;
+  border:2px solid #6b735b;
+  font-size:16px
+}
+.login-box input::placeholder{color:#6e7166}
+.login-box label{
+  color:#4c593c;
+  font-size:11px;
+  font-weight:800
+}
+.notice{
+  font-size:13px;
+  color:#474d42;
+  border-color:rgba(45,51,36,.25);
+  background:#e3dac2
+}
+.form-error{
+  background:#f3d9cf;
+  border:1px solid #8f4f3a;
+  color:#56291d;
+  padding:12px 14px;
+  margin:14px 0
+}
+.form-message{
+  background:#dbe4d0;
+  border:1px solid #60764d;
+  color:#2b3b24;
+  padding:12px 14px;
+  margin:14px 0
+}
+
+.footer{
+  background:#35412e;
+  border-top-color:#667356;
+  color:#fff
+}
+.footer .brand b,.footer h4{color:#fffaf0}
+.footer .brand small{color:#ddcfaa}
+.footer p,.footer-grid>div>a{color:#e2dfd4}
+.footer-grid>div>a{font-size:13px}
+.footer-bottom{
+  color:#c8c8ba;
+  border-top-color:rgba(255,255,255,.2)
+}
+
+/* Backend / signed-in workspace surfaces */
+.portal-head,.portal-card,.stat-card{
+  background:#f3ecd9;
+  color:#20251b;
+  border:1px solid rgba(45,51,36,.24)
+}
+.portal-head p,.portal-card p,.stat-card small{color:#4e5448}
+.stat-card b,.portal-card h2,.portal-card h3{color:#20251b}
+.data-row{
+  border-top:1px solid rgba(45,51,36,.18);
+  color:#30362d
+}
+.data-row small{color:#5a6054}
+.empty-state{color:#5a6054}
+
+/* Keep body copy comfortably readable across smaller devices. */
+@media(max-width:680px){
+  html{font-size:16px}
+  p{font-size:16px}
+  .desktop-nav a,.text-link{font-size:12px}
+  .login-box{background:#eee7d4}
+}
