@@ -36,6 +36,7 @@ export async function createEvent(formData) {
   await ctx.supabase.from('events').insert({
     organization_id: ctx.organization.id,
     team_id: clean(formData.get('team_id')) || null,
+    scenario_id: clean(formData.get('scenario_id')) || null,
     title,
     site_name: clean(formData.get('site_name')) || null,
     location: clean(formData.get('location')) || null,
@@ -166,4 +167,21 @@ export async function createAtacSession(formData) {
     activated_by: ctx.userId
   }, { onConflict: 'event_id' });
   revalidatePath('/app/atac');
+}
+
+
+export async function setEventAttendance(formData) {
+  const ctx = await getCurrentContext();
+  const eventId = clean(formData.get('event_id'));
+  const memberId = clean(formData.get('organization_member_id'));
+  const status = clean(formData.get('status')) || 'confirmed';
+  if (!eventId || !memberId) return;
+  await ctx.supabase.from('event_attendance').upsert({
+    event_id: eventId,
+    organization_member_id: memberId,
+    status,
+    assignment: clean(formData.get('assignment')) || null,
+    transport_notes: clean(formData.get('transport_notes')) || null
+  }, { onConflict: 'event_id,organization_member_id' });
+  revalidatePath('/app/events');
 }
