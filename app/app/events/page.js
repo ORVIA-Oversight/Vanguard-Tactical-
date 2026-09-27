@@ -47,7 +47,7 @@ export default async function Page(){
       <form action={setEventAttendance} className="portal-form portal-profile-card">
         <label>EVENT<select name="event_id" required><option value="">Select event</option>{events?.map(e=><option key={e.id} value={e.id}>{e.title}</option>)}</select></label>
         <label>PLAYER<select name="organization_member_id" required><option value="">Select player</option>{members?.map(m=>{const p=profileByUser[m.user_id]||{};return <option key={m.id} value={m.id}>{p.callsign||p.display_name||'Member'}</option>})}</select></label>
-        <label>STATUS<select name="status"><option value="confirmed">Confirmed</option><option value="maybe">Maybe</option><option value="declined">Declined</option><option value="attended">Attended</option></select></label>
+        <label>STATUS<select name="status"><option value="invited">Invited</option><option value="confirmed">Confirmed</option><option value="waitlist">Waitlist</option><option value="declined">Declined</option><option value="checked_in">Checked in</option><option value="checked_out">Checked out</option></select></label>
         <label>ASSIGNMENT<input name="assignment" placeholder="Alpha 1 / support / reserve"/></label>
         <button className="btn">SAVE ATTENDANCE</button>
       </form>
