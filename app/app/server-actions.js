@@ -264,3 +264,63 @@ export async function linkAtacEvent(formData) {
   revalidatePath('/app/events/' + eventId);
   revalidatePath('/app/atac');
 }
+
+
+export async function prepareAtacRoster(formData) {
+  const ctx = await getCurrentContext();
+  const eventId = clean(formData.get('event_id'));
+  if (!eventId) return;
+
+  const { data: session } = await ctx.supabase
+    .from('atac_sessions')
+    .select('id')
+    .eq('event_id', eventId)
+    .eq('organization_id', ctx.organization.id)
+    .maybeSingle();
+  if (!session?.id) return;
+
+  const { data: attendance } = await ctx.supabase
+    .from('event_attendance')
+    .select('organization_member_id,status,assignment')
+    .eq('event_id', eventId)
+    .in('status', ['confirmed','checked_in']);
+
+  const memberIds = (attendance || []).map(x => x.organization_member_id);
+  const { data: members } = memberIds.length
+    ? await ctx.supabase.from('organization_members').select('id,user_id').in('id', memberIds)
+    : { data: [] };
+  const userIds = (members || []).map(x => x.user_id);
+  const { data: profiles } = userIds.length
+    ? await ctx.supabase.from('profiles').select('id,display_name,callsign').in('id', userIds)
+    : { data: [] };
+
+  const memberById = Object.fromEntries((members || []).map(x => [x.id, x]));
+  const profileById = Object.fromEntries((profiles || []).map(x => [x.id, x]));
+
+  await ctx.supabase.from('atac_roster_snapshots').delete().eq('atac_session_id', session.id);
+
+  const rows = (attendance || []).map(a => {
+    const member = memberById[a.organization_member_id];
+    const profile = profileById[member?.user_id] || {};
+    return {
+      atac_session_id: session.id,
+      event_id: eventId,
+      organization_member_id: a.organization_member_id,
+      callsign: profile.callsign || null,
+      display_name: profile.display_name || null,
+      assignment: a.assignment || null,
+      attendance_status: a.status,
+      prepared_by: ctx.userId
+    };
+  });
+
+  if (rows.length) await ctx.supabase.from('atac_roster_snapshots').insert(rows);
+
+  await ctx.supabase.from('atac_sessions').update({
+    roster_prepared_at: new Date().toISOString(),
+    integration_state: 'roster_ready'
+  }).eq('id', session.id);
+
+  revalidatePath('/app/events/' + eventId);
+  revalidatePath('/app/atac');
+}
