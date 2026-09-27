@@ -6,7 +6,7 @@ const features=[
   ['map','SHARED LIVE MAP','See the team on one map with squad colours, recent movement, accuracy circles and last-seen age.'],
   ['signal','LIVE / DELAYED / OFFLINE','ATAC makes freshness visible: LIVE under 15 seconds, DELAYED 15–60 seconds and OFFLINE over 60 seconds.'],
   ['target','GROUND MARKS','Report what is actually on the ground using controlled mark types, with an optional photo and note.'],
-  ['radio','FIELD TRAFFIC','Structured one-tap messages, free text and browser voice messages sit against the sender callsign and position.'],
+  ['radio','FIELD TRAFFIC','Structured one-tap messages and free text are in the live baseline. Push-to-talk voice exists in the build but is flagged for a current production retest.'],
   ['calendar','EVENT BRIEF','Keep arrival instructions, organiser brief, AO image and source PDF with the live event instead of buried in chat.'],
   ['users','CALLSIGN FIRST','Field users join with an event code and a pre-loaded callsign. Shared views use callsigns rather than personal names.']
 ];
@@ -71,6 +71,21 @@ export default function Page(){
 
     <section className="section">
       <div className="section-head">
+        <div><Kicker>WHAT IS ALREADY UNDERNEATH IT</Kicker><h2>ATAC ALREADY HAS A REAL-TIME BACK END.</h2></div>
+        <p className="section-intro">The live ATAC build is not a mock-up. It currently runs on Viktor Space with a Convex real-time database. Vanguard does not need to recreate the field engine from zero; the integration job is to connect Vanguard identity, teams and events to the capability that already exists.</p>
+      </div>
+      <div className="content-grid">
+        <div className="content-card"><Icon name="signal"/><h3>CONVEX REAL-TIME DATA</h3><p>Events, players, positions, messages, waypoints and administrator sessions are stored behind live subscriptions, so connected command views receive new field data without refreshing.</p></div>
+        <div className="content-card"><Icon name="map"/><h3>MAPLIBRE + OPENSTREETMAP</h3><p>The live map uses MapLibre GL JS over OpenStreetMap raster tiles. Position history, accuracy, squad filtering, waypoints and field marks sit on the same event picture.</p></div>
+        <div className="content-card"><Icon name="bolt"/><h3>LOCAL POSITION QUEUE</h3><p>Position fixes are queued on the phone when data drops and uploaded in order when connectivity returns. Catch-up history is preserved, although it is not live awareness during the outage.</p></div>
+        <div className="content-card"><Icon name="users"/><h3>ROSTER + CALLSIGN CONTROL</h3><p>Pre-loaded callsigns carry name, squad/group and role. The field map stays callsign-first while the authenticated control view can see the real identity behind it.</p></div>
+        <div className="content-card"><Icon name="shield"/><h3>ADMIN + EVENT CONTROL</h3><p>The control layer can create, close and reopen events, manage event codes, remove participants, revoke or reinstate callsigns and inspect event history without deleting the underlying field record.</p></div>
+        <div className="content-card"><Icon name="eye"/><h3>HISTORY + GAP EVIDENCE</h3><p>Stored position history supports fix counts, first/last fix and gaps over 60 seconds. The system records the gap as an information gap rather than inventing a cause.</p></div>
+      </div>
+    </section>
+
+    <section className="section">
+      <div className="section-head">
         <div><Kicker>HOW IT FITS</Kicker><h2>VANGUARD BEFORE. ATAC DURING. LEARNING AFTER.</h2></div>
         <p className="section-intro">The point is not another standalone app. It is a field layer attached to the same team and event model.</p>
       </div>
@@ -91,6 +106,58 @@ export default function Page(){
         <div className="content-card"><Icon name="check"/><h3>LIVE ATAC CAPABILITY</h3><p>Event-code joining, callsigns, foreground position sharing, accuracy and age, status states, movement trails, ground marks, structured traffic, event brief and command map.</p></div>
         <div className="content-card"><Icon name="bolt"/><h3>VANGUARD INTEGRATION — IN BUILD</h3><p>Use the Vanguard roster and event object to create the ATAC event, carry authorised role/callsign data across and return controlled event information without duplicate administration.</p></div>
         <div className="content-card"><Icon name="eye"/><h3>FUTURE EVENT REPLAY</h3><p>Automated export, after-action replay and deeper event analytics are not current ATAC functions and are shown only as future capability.</p></div>
+      </div>
+    </section>
+
+    <section className="section section-dark">
+      <div className="section-head">
+        <div><Kicker>CAPABILITY TRUTH</Kicker><h2>WHAT WE CAN DO NOW — AND WHAT WE CANNOT.</h2></div>
+        <p className="section-intro">This is the current controlled position from the live ATAC build and technical handover, not a future-feature wishlist.</p>
+      </div>
+      <div className="capability-matrix">
+        <div className="capability-column">
+          <span className="capability-label live-cap">LIVE / BASELINE</span>
+          <h3>Available now</h3>
+          <ul>
+            <li>Event-code join with pre-loaded callsign, role and squad/group</li>
+            <li>PWA / home-screen use with no app-store install for field users</li>
+            <li>Foreground GPS position sharing with phone-reported accuracy</li>
+            <li>LIVE / DELAYED / OFFLINE freshness states</li>
+            <li>Offline position queue and ordered catch-up when signal returns</li>
+            <li>Recent movement trails, squad filters, follow mode and accuracy circles</li>
+            <li>41 ground-mark types in five groups, with optional note/photo</li>
+            <li>Preset and free-text field messages with callsign and position</li>
+            <li>Manual waypoints and shareable map locations</li>
+            <li>Event brief with organiser instructions, AO image and source PDF</li>
+            <li>Authenticated super-admin event and roster controls</li>
+            <li>Stored field history and reporting-gap evidence</li>
+            <li>Simulation mode permanently marked SIMULATED DATA</li>
+          </ul>
+        </div>
+        <div className="capability-column">
+          <span className="capability-label review-cap">RETEST / CONTROLLED</span>
+          <h3>Exists but needs current proof</h3>
+          <ul>
+            <li>Push-to-talk browser voice clips exist in the build, but later assurance records require a current production retest before we present voice as field-proven</li>
+            <li>Photo/note storage exists, but privacy and retention behaviour should be retested before wider commercial use</li>
+            <li>Scale and endurance across many phones and poor-signal environments are not yet supported by a mature operational evidence base</li>
+          </ul>
+        </div>
+        <div className="capability-column">
+          <span className="capability-label missing-cap">NOT BUILT / NOT AVAILABLE</span>
+          <h3>Do not claim yet</h3>
+          <ul>
+            <li>Background GPS while the phone is locked or the browser is backgrounded</li>
+            <li>Offline map tiles</li>
+            <li>Native iOS or Android apps</li>
+            <li>Geofences or automatic entry/exit alarms</li>
+            <li>Man-down or guaranteed emergency alerting</li>
+            <li>CAD / dispatch / automatic resource allocation</li>
+            <li>Customer self-service, multi-tenant administration or billing</li>
+            <li>Automatic after-action export or replay</li>
+            <li>Full Vanguard-to-ATAC identity/event synchronisation</li>
+          </ul>
+        </div>
       </div>
     </section>
 
