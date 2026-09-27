@@ -292,3 +292,39 @@ with check (
       )
   )
 );
+
+
+create table if not exists public.business_settings (
+  organization_id uuid primary key references public.organizations(id) on delete cascade,
+  trading_name text not null default 'Vanguard Tactical',
+  legal_company_name text,
+  company_number text,
+  registered_office text,
+  support_email text,
+  accounts_email text,
+  privacy_email text,
+  vat_number text,
+  prototype_mode boolean not null default true,
+  payments_enabled boolean not null default false,
+  public_signup_enabled boolean not null default true,
+  updated_at timestamptz not null default now()
+);
+alter table public.business_settings enable row level security;
+grant select, update on public.business_settings to authenticated;
+
+drop policy if exists business_settings_select_member on public.business_settings;
+create policy business_settings_select_member
+on public.business_settings for select to authenticated
+using (private.is_org_member(organization_id));
+
+drop policy if exists business_settings_update_owner on public.business_settings;
+create policy business_settings_update_owner
+on public.business_settings for update to authenticated
+using (private.has_org_role(organization_id,array['owner']))
+with check (private.has_org_role(organization_id,array['owner']));
+
+insert into public.business_settings(organization_id,trading_name,prototype_mode,payments_enabled,public_signup_enabled)
+select id,'Vanguard Tactical',true,false,true
+from public.organizations
+where slug='vanguard-tactical'
+on conflict (organization_id) do nothing;
