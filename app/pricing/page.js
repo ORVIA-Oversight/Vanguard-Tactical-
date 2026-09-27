@@ -21,7 +21,7 @@ export default function Page(){return <Shell>
       <span className="eyebrow">{i===0?'CORE IDENTITY':i===3?'TEAM ALPHA TARGET':'PROPOSED'}</span>
       <h3>{p[0]}</h3>
       <div className="price">{p[1]}{p[1]!=='FREE'&&<small>/month</small>}</div>
-      <ul>{p[2].map(x=><li key={x}><Icon name="check" size={15}/>{x}</li>)}</ul>
+      <p>{p[2]}</p><ul>{p[3].map(x=><li key={x}><Icon name="check" size={15}/>{x}</li>)}</ul>
       <Btn href="/signup">ALPHA ACCESS</Btn>
     </div>)}</div>
   </section>
