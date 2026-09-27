@@ -346,3 +346,93 @@ a:focus-visible,button:focus-visible,input:focus-visible{
 .review-cap{background:#a87334;color:#fff}
 .missing-cap{background:#6a655d;color:#fff}
 @media(max-width:900px){.capability-matrix{grid-template-columns:1fr}}
+
+
+/* 2026 COMMERCIAL CLEAN PASS
+   Cleaner premium tactical palette: off-white, warm grey, slate, muted olive and restrained bronze. */
+:root{
+  --black:#f4f2ec;
+  --black2:#ebe8e1;
+  --panel:#ffffff;
+  --panel2:#f7f5ef;
+  --ranger:#5f6b52;
+  --ranger2:#394238;
+  --olive:#6f7b62;
+  --khaki:#7b725f;
+  --stone:#22251f;
+  --bone:#fbfaf6;
+  --signal:#9b6b3d;
+  --line:rgba(42,47,41,.16);
+  --muted:#646a62;
+  --white:#1f231e;
+}
+html{font-size:17px}
+body{background:#f4f2ec;color:#1f231e}
+p{color:#555b54}
+.site-header{
+  background:rgba(255,255,255,.96);
+  border-bottom:1px solid rgba(42,47,41,.12);
+  box-shadow:0 4px 18px rgba(34,39,32,.06)
+}
+.site-header .brand b{color:#20251f}
+.site-header .brand small{color:#68725e}
+.site-header .desktop-nav a,.site-header .text-link{color:#394039}
+.site-header .desktop-nav a:hover,.site-header .text-link:hover{color:#111}
+.btn{background:#4f5c48;border-color:#4f5c48;color:#fff;border-radius:3px;box-shadow:none}
+.btn:hover{background:#3f4a3a}
+.btn-ghost{background:#fff;border-color:#a7aea3;color:#29302a}
+.btn-ghost:hover{background:#f2f1ed}
+.hero{background:#f6f4ef}
+.hero-copy{background:linear-gradient(135deg,#fbfaf7 0%,#efede7 100%)}
+.hero h1{color:#20241f}
+.hero h1 em{color:#62705a}
+.hero-copy>p{color:#4e554e}
+.kicker{color:#625e52}
+.kicker span{background:#9b6b3d}
+.hero-visual:after{
+  background:linear-gradient(90deg,#f6f4ef 0%,rgba(246,244,239,.3) 22%,rgba(246,244,239,0) 58%),
+             linear-gradient(0deg,rgba(28,32,27,.38) 0%,transparent 34%)
+}
+.hero-stamp{background:rgba(36,43,36,.88);color:#fff;border-color:rgba(255,255,255,.3)}
+.metric-strip{background:#fff}
+.metric b{color:#20251f}
+.metric span{color:#676d65}
+.section{background:#f4f2ec}
+.section-dark{background:#e8e5dd}
+.product-card,.content-card,.price-card,.step,.sidebar,.dash-card,.portal-head,.portal-card,.stat-card{
+  background:#fff;
+  border-color:rgba(42,47,41,.15);
+  box-shadow:0 6px 18px rgba(42,47,41,.035)
+}
+.product-card:hover{background:#fbfaf7}
+.product-icon{background:#eef0e9;border-color:#aab1a3;color:#526047}
+.eyebrow{color:#5c684f}
+.card-link{color:#5c574b}
+.band{background:#3f493d}
+.page-hero{background:#dcd9d1}
+.page-hero-copy{background:#fbfaf7}
+.chip{background:#eef0e9;border-color:#b6bbae;color:#353b35}
+.steps{background:transparent}
+.price-card.featured{background:#f2f4ee;border-color:#68745f}
+.workspace{background:#f0eee8}
+.sidebar a{color:#404640;border-bottom-color:rgba(42,47,41,.08)}
+.sidebar a:first-of-type{background:#4f5c48;color:#fff}
+.login-wrap{background:#f1efe9}
+.login-box{background:#fbfaf7}
+.login-box input{background:#fff;border:1px solid #aeb5aa;color:#20251f}
+.login-box label{color:#4e5948}
+.notice{background:#f2f1ed;border-color:#d4d7d1;color:#505650}
+.footer{background:#2f3730;color:#fff}
+.footer p,.footer-grid>div>a{color:#d9ddd7}
+.footer h4,.footer .brand b{color:#fff}
+.footer .brand small{color:#c7cdbf}
+.footer-bottom{color:#b8beb6;border-top-color:rgba(255,255,255,.14)}
+.alpha-banner{background:#394238;color:#fff}
+.atac-demo{background:#fff;border-color:rgba(42,47,41,.15)}
+.status-stack,.atac-feed{background:#fbfaf7}
+.atac-map{background:linear-gradient(135deg,#d7d8cd,#eeeadf 45%,#c9cdbd)}
+.capability-column{background:#fff;border-color:rgba(42,47,41,.15)}
+.live-cap{background:#53634c}
+.review-cap{background:#9a7448}
+.missing-cap{background:#6d716b}
+.mobile-portal-nav{background:#394238}
