@@ -25,14 +25,14 @@ export function Header() {
   return <header className="site-header">
     <Link href="/" className="brand" aria-label="Vanguard Tactical home"><span className="brand-logo" aria-hidden="true"></span><span className="brand-type"><b>VANGUARD</b><small>TACTICAL</small></span></Link>
     <nav className="desktop-nav">
-      <Link href="/team-os">TEAM OS</Link><Link href="/armoury">ARMOURY</Link><Link href="/events">EVENTS</Link><Link href="/atac">ATAC</Link><Link href="/field">FIELD</Link><Link href="/control">CONTROL</Link><Link href="/6-troop">6 TROOP</Link><Link href="/pricing">PRICING</Link>
+      <Link href="/platform">PLATFORM</Link><Link href="/atac">ATAC</Link><Link href="/scenarios">SCENARIOS</Link><Link href="/for-teams-organisers">TEAMS & ORGANISERS</Link><Link href="/pricing">PRICING</Link><Link href="/ecosystem">ECOSYSTEM</Link>
     </nav>
-    <div className="header-actions"><Link className="text-link" href="/login">LOGIN</Link><Link className="btn btn-small" href="/pricing">BUILD YOUR TEAM</Link></div>
+    <div className="header-actions"><Link className="text-link" href="/login">SIGN IN</Link><Link className="btn btn-small" href="/signup">CREATE PROFILE</Link></div>
   </header>;
 }
 
 export function Footer() {
-  return <footer className="footer"><div className="footer-grid"><div><div className="brand footer-brand"><span className="brand-logo footer-logo" aria-hidden="true"></span><span className="brand-type"><b>VANGUARD</b><small>TACTICAL</small></span></div><p>One operating environment for organised airsoft teams, equipment, events and field operations.</p></div><div><h4>PLATFORM</h4><Link href="/team-os">Team OS</Link><Link href="/atac">ATAC</Link><Link href="/control">Control</Link><Link href="/field">Field</Link></div><div><h4>TEAM</h4><Link href="/6-troop">6 Troop</Link><Link href="/events">Events</Link><Link href="/armoury">Armoury</Link></div><div><h4>ACCESS</h4><Link href="/pricing">Pricing</Link><Link href="/login">Login</Link><Link href="/workspace">Workspace demo</Link></div></div><div className="footer-bottom"><span>© 2026 Vanguard Tactical. Sporting airsoft / milsim platform.</span><span>Photography: Pexels contributors. Replace with owned Vanguard media before launch.</span></div></footer>;
+  return <footer className="footer"><div className="footer-grid"><div><div className="brand footer-brand"><span className="brand-logo footer-logo" aria-hidden="true"></span><span className="brand-type"><b>VANGUARD</b><small>TACTICAL</small></span></div><p>One platform for player identity, teams, events, equipment, scenarios and live field awareness.</p></div><div><h4>PLATFORM</h4><Link href="/platform">Platform</Link><Link href="/atac">ATAC</Link><Link href="/scenarios">Scenarios</Link><Link href="/pricing">Pricing</Link></div><div><h4>ECOSYSTEM</h4><Link href="/for-teams-organisers">Teams & organisers</Link><Link href="/ecosystem">Sponsored teams</Link><Link href="/6-troop">6 Troop case study</Link></div><div><h4>ACCESS</h4><Link href="/signup">Create profile</Link><Link href="/login">Sign in</Link><Link href="/workspace">Workspace demo</Link></div></div><div className="footer-bottom"><span>© 2026 Vanguard Tactical prototype.</span><span>Private alpha — company and commercial details will be added before public launch.</span></div></footer>;
 }
 
 export function Shell({ children }) { return <><Header/><main>{children}</main><Footer/></>; }
