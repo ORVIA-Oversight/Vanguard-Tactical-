@@ -52,6 +52,7 @@ export async function createEquipment(formData) {
   const name = clean(formData.get('name')); if (!name) return;
   await ctx.supabase.from('equipment').insert({
     organization_id: ctx.organization.id,
+    team_id: clean(formData.get('team_id')) || null,
     name,
     category: clean(formData.get('category')) || 'general',
     asset_tag: clean(formData.get('asset_tag')) || null,
@@ -81,20 +82,88 @@ export async function createInvite(formData) {
   const ctx = await getCurrentContext(); if (!ctx.organization) redirect('/onboarding');
   const email = clean(formData.get('email')).toLowerCase();
   const role = clean(formData.get('role')) || 'member';
+  const teamId = clean(formData.get('team_id')) || null;
   if (!email) return;
-  await ctx.supabase.from('organization_invites').insert({ organization_id: ctx.organization.id, email, role, invited_by: ctx.userId });
+  await ctx.supabase.from('organization_invites').insert({ organization_id: ctx.organization.id, team_id: teamId, email, role, invited_by: ctx.userId });
   revalidatePath('/app/members');
 }
 
 export async function acceptInvite(formData) {
   const { supabase, userId, email } = await requireUser();
   const token = clean(formData.get('token'));
-  const { data: invite, error } = await supabase.from('organization_invites').select('id,organization_id,email,role,accepted_at,expires_at').eq('token', token).single();
+  const { data: invite, error } = await supabase.from('organization_invites').select('id,organization_id,team_id,email,role,accepted_at,expires_at').eq('token', token).single();
   if (error || !invite) redirect('/app?error=Invite%20not%20found');
   if (invite.accepted_at) redirect('/app');
   if (invite.email.toLowerCase() !== String(email).toLowerCase()) redirect('/app?error=Invite%20email%20does%20not%20match%20your%20account');
   const { error: memberError } = await supabase.from('organization_members').insert({ organization_id: invite.organization_id, user_id: userId, role: invite.role, status: 'active' });
   if (memberError && !memberError.message.includes('duplicate')) redirect(`/app?error=${encodeURIComponent(memberError.message)}`);
+  if (invite.team_id) {
+    const { data: member } = await supabase.from('organization_members').select('id').eq('organization_id', invite.organization_id).eq('user_id', userId).single();
+    if (member?.id) await supabase.from('team_members').upsert({ team_id: invite.team_id, organization_member_id: member.id, role_title: 'Member', is_primary: true }, { onConflict: 'team_id,organization_member_id' });
+  }
   await supabase.from('organization_invites').update({ accepted_at: new Date().toISOString(), accepted_by: userId }).eq('id', invite.id);
   redirect('/app');
+}
+
+
+export async function updatePlayerProfile(formData) {
+  const { supabase, userId } = await requireUser();
+  await supabase.from('profiles').update({
+    display_name: clean(formData.get('display_name')) || null,
+    callsign: clean(formData.get('callsign')) || null,
+    home_region: clean(formData.get('home_region')) || null,
+    experience_level: clean(formData.get('experience_level')) || null,
+    bio: clean(formData.get('bio')) || null,
+    profile_visibility: clean(formData.get('profile_visibility')) || 'team',
+    updated_at: new Date().toISOString()
+  }).eq('id', userId);
+  revalidatePath('/app/profile');
+}
+
+export async function addPlayerEquipment(formData) {
+  const { supabase, userId } = await requireUser();
+  const name = clean(formData.get('name'));
+  if (!name) return;
+  await supabase.from('player_equipment').insert({
+    user_id: userId,
+    name,
+    category: clean(formData.get('category')) || 'general',
+    make_model: clean(formData.get('make_model')) || null,
+    quantity: Number(formData.get('quantity') || 1),
+    status: 'owned',
+    notes: clean(formData.get('notes')) || null
+  });
+  revalidatePath('/app/profile');
+}
+
+export async function createSupportCase(formData) {
+  const ctx = await getCurrentContext();
+  const subject = clean(formData.get('subject'));
+  if (!subject) return;
+  await ctx.supabase.from('support_cases').insert({
+    organization_id: ctx.organization?.id || null,
+    user_id: ctx.userId,
+    category: clean(formData.get('category')) || 'support',
+    subject,
+    detail: clean(formData.get('detail')) || null,
+    status: 'open',
+    escalation_state: 'ai_triage'
+  });
+  revalidatePath('/app/support');
+}
+
+export async function createAtacSession(formData) {
+  const ctx = await getCurrentContext();
+  const eventId = clean(formData.get('event_id'));
+  if (!eventId) return;
+  await ctx.supabase.from('atac_sessions').upsert({
+    organization_id: ctx.organization.id,
+    event_id: eventId,
+    status: 'planned',
+    participant_limit: Number(formData.get('participant_limit') || 50),
+    retention_hours: 48,
+    notes: clean(formData.get('notes')) || null,
+    activated_by: ctx.userId
+  }, { onConflict: 'event_id' });
+  revalidatePath('/app/atac');
 }
