@@ -24,7 +24,7 @@ export default async function Page(){
       <div className="portal-card"><h2>Event records</h2>
         {events?.length?events.map(e=>{
           const roster=attendanceByEvent[e.id]||[];
-          return <div className="data-row" key={e.id}><div><b>{e.title}</b><small>{e.site_name||'Site TBC'} / {scenarioById[e.scenario_id]?.title||'No scenario'}</small></div><span>{e.starts_at?new Date(e.starts_at).toLocaleDateString('en-GB'):'TBC'}</span><em>{roster.length} attending</em></div>
+          return <a className="data-row data-row-link" href={'/app/events/'+e.id} key={e.id}><div><b>{e.title}</b><small>{e.site_name||'Site TBC'} / {scenarioById[e.scenario_id]?.title||'No scenario'}</small></div><span>{e.starts_at?new Date(e.starts_at).toLocaleDateString('en-GB'):'TBC'}</span><em>{roster.length} attending</em></a>
         }):<div className="empty-state">No events yet.</div>}
       </div>
 
