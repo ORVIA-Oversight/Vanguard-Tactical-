@@ -247,3 +247,48 @@ values
 ('sentinel-line','Sentinel Line','Border-sector patrol, checkpoint and infrastructure scenario.','mission','prototype','8-12 hours','30-150',true,'commander',true),
 ('black-box','Black Box','Downed aircraft recovery and search-sector scenario.','mission','prototype','6-10 hours','20-100',true,'umpire',true)
 on conflict (slug) do nothing;
+
+
+-- Team leaders can manage attendance for events belonging to their own teams.
+drop policy if exists attendance_insert_manager on public.event_attendance;
+create policy attendance_insert_manager
+on public.event_attendance for insert to authenticated
+with check (
+  exists (
+    select 1 from public.events e
+    where e.id=event_attendance.event_id
+      and (
+        private.is_org_admin(e.organization_id)
+        or (e.team_id is not null and private.is_team_leader(e.team_id))
+      )
+  )
+);
+
+drop policy if exists attendance_update_manager_or_self on public.event_attendance;
+create policy attendance_update_manager_or_self
+on public.event_attendance for update to authenticated
+using (
+  exists (
+    select 1 from public.events e
+    where e.id=event_attendance.event_id
+      and (
+        private.is_org_admin(e.organization_id)
+        or (e.team_id is not null and private.is_team_leader(e.team_id))
+      )
+  )
+  or exists (
+    select 1 from public.organization_members m
+    where m.id=event_attendance.organization_member_id
+      and m.user_id=(select auth.uid())
+  )
+)
+with check (
+  exists (
+    select 1 from public.events e
+    where e.id=event_attendance.event_id
+      and (
+        private.is_org_admin(e.organization_id)
+        or (e.team_id is not null and private.is_team_member(e.team_id))
+      )
+  )
+);
