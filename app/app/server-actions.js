@@ -247,3 +247,20 @@ export async function updateTeamMember(formData) {
   revalidatePath('/app/teams');
   revalidatePath('/app/teams/' + teamId);
 }
+
+
+export async function linkAtacEvent(formData) {
+  const ctx = await getCurrentContext();
+  const eventId = clean(formData.get('event_id'));
+  const externalCode = clean(formData.get('external_event_code'));
+  const externalEventId = clean(formData.get('external_event_id'));
+  if (!eventId) return;
+  await ctx.supabase.from('atac_sessions').update({
+    external_event_code: externalCode || null,
+    external_event_id: externalEventId || null,
+    integration_state: externalCode || externalEventId ? 'linked' : 'planning',
+    last_sync_at: new Date().toISOString()
+  }).eq('event_id', eventId).eq('organization_id', ctx.organization.id);
+  revalidatePath('/app/events/' + eventId);
+  revalidatePath('/app/atac');
+}
