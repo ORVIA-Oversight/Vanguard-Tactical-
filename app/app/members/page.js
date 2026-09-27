@@ -1,2 +1,29 @@
-import { getCurrentContext } from '../../../lib/vanguard';import { createInvite } from '../server-actions';
-export default async function Page(){const c=await getCurrentContext();const [{data:members},{data:invites}]=await Promise.all([c.supabase.from('organization_members').select('id,user_id,role,status,created_at').eq('organization_id',c.organization.id),c.supabase.from('organization_invites').select('*').eq('organization_id',c.organization.id).is('accepted_at',null).order('created_at',{ascending:false})]);const ids=(members||[]).map(m=>m.user_id);const {data:profiles}=ids.length?await c.supabase.from('profiles').select('id,display_name,callsign').in('id',ids):{data:[]};const byId=Object.fromEntries((profiles||[]).map(p=>[p.id,p]));const base=process.env.NEXT_PUBLIC_SITE_URL||'http://localhost:3000';return <section><div className="portal-head"><div><span className="eyebrow">PEOPLE</span><h1>Members & access</h1><p>Invite team members and control their organisation-level role.</p></div></div><div className="portal-grid-two"><div className="portal-card"><h2>Members</h2>{members?.map(m=>{const p=byId[m.user_id]||{};return <div className="data-row" key={m.id}><div><b>{p.display_name||'Member'}</b><small>{p.callsign||'No callsign'}</small></div><span>{m.role}</span><em>{m.status}</em></div>})}</div><div className="portal-card"><span className="eyebrow">INVITE</span><h2>Add a person</h2><form action={createInvite} className="portal-form"><label>EMAIL<input name="email" type="email" required/></label><label>ROLE<select name="role"><option value="member">Member</option><option value="viewer">Viewer</option><option value="manager">Manager</option><option value="admin">Admin</option></select></label><button className="btn">CREATE INVITE</button></form>{invites?.length>0&&<div className="invite-list"><span className="eyebrow">PENDING INVITES</span>{invites.map(i=><div className="invite-item" key={i.id}><b>{i.email}</b><small>{base}/invite/{i.token}</small></div>)}</div>}</div></div></section>}
+import { getCurrentContext } from '../../../lib/vanguard';
+import { createInvite } from '../server-actions';
+
+export default async function Page(){
+  const c=await getCurrentContext();
+  const [{data:members},{data:invites},{data:teams}]=await Promise.all([
+    c.supabase.from('organization_members').select('id,user_id,role,status,created_at').eq('organization_id',c.organization.id),
+    c.supabase.from('organization_invites').select('*').eq('organization_id',c.organization.id).is('accepted_at',null).order('created_at',{ascending:false}),
+    c.supabase.from('teams').select('id,name').eq('organization_id',c.organization.id).order('name')
+  ]);
+  const ids=(members||[]).map(m=>m.user_id);
+  const {data:profiles}=ids.length?await c.supabase.from('profiles').select('id,display_name,callsign').in('id',ids):{data:[]};
+  const byId=Object.fromEntries((profiles||[]).map(p=>[p.id,p]));
+  const base=process.env.NEXT_PUBLIC_SITE_URL||'http://localhost:3000';
+  return <section>
+    <div className="portal-head"><div><span className="eyebrow">PEOPLE</span><h1>Members & access</h1><p>People keep their own Vanguard profile. Team access is granted as a relationship to the relevant team.</p></div></div>
+    <div className="portal-grid-two">
+      <div className="portal-card"><h2>Visible members</h2>{members?.length?members.map(m=>{const p=byId[m.user_id]||{};return <div className="data-row" key={m.id}><div><b>{p.display_name||'Member'}</b><small>{p.callsign||'No callsign'}</small></div><span>{m.role}</span><em>{m.status}</em></div>}):<div className="empty-state">No members yet.</div>}</div>
+      <div className="portal-card"><span className="eyebrow">INVITE</span><h2>Add a person to a team</h2><form action={createInvite} className="portal-form">
+        <label>EMAIL<input name="email" type="email" required/></label>
+        <label>TEAM<select name="team_id" required><option value="">Select team</option>{teams?.map(t=><option key={t.id} value={t.id}>{t.name}</option>)}</select></label>
+        <input type="hidden" name="role" value="member"/>
+        <button className="btn">CREATE INVITE</button>
+      </form>
+      {invites?.length>0&&<div className="invite-list"><span className="eyebrow">PENDING INVITES</span>{invites.map(i=><div className="invite-item" key={i.id}><b>{i.email}</b><small>{base}/invite/{i.token}</small></div>)}</div>}
+      </div>
+    </div>
+  </section>
+}
