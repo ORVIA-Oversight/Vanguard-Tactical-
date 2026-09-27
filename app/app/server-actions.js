@@ -69,14 +69,20 @@ export async function createActionItem(formData) {
   const title = clean(formData.get('title')); if (!title) return;
   await ctx.supabase.from('action_items').insert({
     organization_id: ctx.organization.id,
+    event_id: clean(formData.get('event_id')) || null,
+    team_id: clean(formData.get('team_id')) || null,
     title,
+    detail: clean(formData.get('detail')) || null,
     due_at: clean(formData.get('due_at')) || null,
     priority: clean(formData.get('priority')) || 'normal',
     status: 'open',
     assigned_to: ctx.userId,
     created_by: ctx.userId
   });
-  revalidatePath('/app/actions'); revalidatePath('/app');
+  revalidatePath('/app/actions');
+  revalidatePath('/app');
+  const eventId = clean(formData.get('event_id'));
+  if (eventId) revalidatePath('/app/events/' + eventId);
 }
 
 export async function createInvite(formData) {
@@ -184,6 +190,7 @@ export async function setEventAttendance(formData) {
     transport_notes: clean(formData.get('transport_notes')) || null
   }, { onConflict: 'event_id,organization_member_id' });
   revalidatePath('/app/events');
+  revalidatePath('/app/events/' + eventId);
 }
 
 
@@ -202,4 +209,41 @@ export async function updateBusinessSettings(formData) {
     updated_at: new Date().toISOString()
   }).eq('organization_id', ctx.organization.id);
   revalidatePath('/app/settings');
+}
+
+
+export async function updateEventBrief(formData) {
+  const ctx = await getCurrentContext();
+  const eventId = clean(formData.get('event_id'));
+  if (!eventId) return;
+  const allowed = ['planning','confirmed','live','complete','cancelled'];
+  const status = clean(formData.get('status'));
+  await ctx.supabase.from('events').update({
+    site_name: clean(formData.get('site_name')) || null,
+    location: clean(formData.get('location')) || null,
+    arrival_window: clean(formData.get('arrival_window')) || null,
+    briefing_time: clean(formData.get('briefing_time')) || null,
+    notes: clean(formData.get('notes')) || null,
+    scenario_id: clean(formData.get('scenario_id')) || null,
+    status: allowed.includes(status) ? status : 'planning',
+    updated_at: new Date().toISOString()
+  }).eq('id', eventId).eq('organization_id', ctx.organization.id);
+  revalidatePath('/app/events');
+  revalidatePath('/app/events/' + eventId);
+}
+
+export async function updateTeamMember(formData) {
+  const ctx = await getCurrentContext();
+  const teamId = clean(formData.get('team_id'));
+  const teamMemberId = clean(formData.get('team_member_id'));
+  if (!teamId || !teamMemberId) return;
+  const allowedRoles = ['Member','Team Leader','Deputy','Squad Lead','Quartermaster','Medic','Comms','Reserve'];
+  const requestedRole = clean(formData.get('role_title'));
+  await ctx.supabase.from('team_members').update({
+    role_title: allowedRoles.includes(requestedRole) ? requestedRole : 'Member',
+    callsign: clean(formData.get('callsign')) || null,
+    is_primary: formData.get('is_primary') === 'on'
+  }).eq('id', teamMemberId).eq('team_id', teamId);
+  revalidatePath('/app/teams');
+  revalidatePath('/app/teams/' + teamId);
 }
