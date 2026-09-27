@@ -185,3 +185,21 @@ export async function setEventAttendance(formData) {
   }, { onConflict: 'event_id,organization_member_id' });
   revalidatePath('/app/events');
 }
+
+
+export async function updateBusinessSettings(formData) {
+  const ctx = await getCurrentContext();
+  if (!ctx.organization) return;
+  await ctx.supabase.from('business_settings').update({
+    trading_name: clean(formData.get('trading_name')) || 'Vanguard Tactical',
+    legal_company_name: clean(formData.get('legal_company_name')) || null,
+    company_number: clean(formData.get('company_number')) || null,
+    registered_office: clean(formData.get('registered_office')) || null,
+    support_email: clean(formData.get('support_email')) || null,
+    accounts_email: clean(formData.get('accounts_email')) || null,
+    privacy_email: clean(formData.get('privacy_email')) || null,
+    vat_number: clean(formData.get('vat_number')) || null,
+    updated_at: new Date().toISOString()
+  }).eq('organization_id', ctx.organization.id);
+  revalidatePath('/app/settings');
+}
