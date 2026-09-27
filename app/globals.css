@@ -326,3 +326,23 @@ a:focus-visible,button:focus-visible,input:focus-visible{
   .data-row{grid-template-columns:1fr auto}
   .data-row em{grid-column:1/-1}
 }
+
+
+.capability-matrix{
+  display:grid;grid-template-columns:repeat(3,1fr);gap:18px
+}
+.capability-column{
+  background:#f3ecd9;border:1px solid rgba(45,51,36,.24);
+  padding:28px
+}
+.capability-column h3{font-size:24px;margin:14px 0 18px}
+.capability-column ul{margin:0;padding-left:20px}
+.capability-column li{margin:10px 0;color:#42483d;line-height:1.55}
+.capability-label{
+  display:inline-block;padding:7px 10px;font-size:10px;font-weight:900;
+  letter-spacing:.1em;border-radius:2px
+}
+.live-cap{background:#526141;color:#fff}
+.review-cap{background:#a87334;color:#fff}
+.missing-cap{background:#6a655d;color:#fff}
+@media(max-width:900px){.capability-matrix{grid-template-columns:1fr}}
