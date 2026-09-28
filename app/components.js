@@ -15,6 +15,9 @@ const iconPaths = {
   lock: 'M5 11h14v10H5z M8 11V7a4 4 0 0 1 8 0v4',
   eye: 'M2 12s4-7 10-7 10 7 10 7-4 7-10 7S2 12 2 12z M12 15a3 3 0 1 0 0-6 3 3 0 0 0 0 6',
   target: 'M12 22a10 10 0 1 0 0-20 10 10 0 0 0 0 20z M12 18a6 6 0 1 0 0-12 6 6 0 0 0 0 12z M12 14a2 2 0 1 0 0-4 2 2 0 0 0 0 4z',
+  sword: 'M14.5 3.5l-4 10 2 2 2-2 3-8-3 1z M10.5 13.5l-4 4 M7.5 16.5l2 2 M5 19l2-2 M13 14l3 3',
+  helmet: 'M5 15c0-6 3-10 8-10 3 0 5 1 6 3-2 0-4 1-5 3 1 1 2 3 2 5H9c-2 0-3 1-4 2v-3z M10 10c1-2 3-3 5-3 M9 19h7',
+  journey: 'M4 20c3-5 4-8 7-10s4-3 9-6 M10 20c1-4 2-7 4-9 M17 4h3v3 M18.5 3v5',
 };
 
 export function Icon({ name, size = 22 }) {
@@ -28,8 +31,8 @@ export function Header() {
       <Link href="/platform">Platform</Link>
       <Link href="/atac">Field Ops</Link>
       <Link href="/sectors">Sectors</Link>
-      <Link href="/organisers">Control</Link>
-      <Link href="/sites">Sites</Link>
+      <Link href="/white-label">White Label</Link>
+      <Link href="/global">Global</Link>
       <Link href="/pricing">Pricing</Link>
     </nav>
     <div className="header-actions"><Link className="text-link" href="/login">Log in</Link><Link className="btn btn-small" href="/signup">Start free</Link></div>
@@ -37,7 +40,7 @@ export function Header() {
 }
 
 export function Footer() {
-  return <footer className="footer"><div className="footer-grid"><div><div className="brand footer-brand"><span className="brand-logo footer-logo" aria-hidden="true"></span><span className="brand-type"><b>Vanguard</b><small>Tactical</small></span></div><p>A human-led operational platform for command, tracking, communications, readiness and field coordination.</p></div><div><h4>Platform</h4><Link href="/platform">Platform</Link><Link href="/atac">Field operations</Link><Link href="/sectors">Sectors</Link><Link href="/pricing">Pricing</Link></div><div><h4>Commercial users</h4><Link href="/organisers">Organisers</Link><Link href="/sites">Sites</Link><Link href="/atac">ATAC</Link><Link href="/scenarios">Scenarios</Link></div><div><h4>Proof & access</h4><Link href="/6-troop">6 Troop case study</Link><Link href="/signup">Create profile</Link><Link href="/login">Log in</Link><Link href="/workspace">Workspace demo</Link></div></div><div className="footer-bottom"><span>© 2026 Vanguard Tactical.</span><span>Private alpha — capabilities are labelled live, in development or planned.</span></div></footer>;
+  return <footer className="footer"><div className="footer-grid"><div><div className="brand footer-brand"><span className="brand-logo footer-logo" aria-hidden="true"></span><span className="brand-type"><b>Vanguard</b><small>Tactical</small></span></div><p>A human-led operational platform for command, tracking, communications, readiness and field coordination.</p></div><div><h4>Platform</h4><Link href="/platform">Platform</Link><Link href="/atac">Field operations</Link><Link href="/sectors">Sectors</Link><Link href="/white-label">White Label</Link><Link href="/global">Global</Link><Link href="/pricing">Pricing</Link></div><div><h4>Commercial users</h4><Link href="/organisers">Organisers</Link><Link href="/sites">Sites</Link><Link href="/atac">ATAC</Link><Link href="/scenarios">Scenarios</Link></div><div><h4>Programmes & access</h4><Link href="/airsoft">Airsoft programme</Link><Link href="/6-troop">6 Troop</Link><Link href="/signup">Create profile</Link><Link href="/login">Log in</Link></div></div><div className="footer-bottom"><span>© 2026 Vanguard Tactical.</span><span>Private alpha — capabilities are labelled live, in development or planned.</span></div></footer>;
 }
 
 export function Shell({ children }) { return <><Header/><main>{children}</main><Footer/></>; }

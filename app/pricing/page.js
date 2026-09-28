@@ -25,5 +25,6 @@ export default function Page(){return <Shell>
 <div className="trust-card"><h3>Team / Team Pro</h3><p>Adds operational team management, then deeper multi-element and review capability.</p></div>
 <div className="trust-card"><h3>Organiser</h3><p>Adds event-specific commercial operations and ATAC-ready event structures.</p></div>
 </div></div></section>
+<section className="section"><div className="section-inner"><div className="section-head"><div><Kicker>Enterprise deployment</Kicker><h2>Need Vanguard under your own brand?</h2></div><p className="section-intro">White Label is a separate implementation route for organisations that need their own domain, identity, terminology, roles and managed operating environment. Pricing will be scoped after discovery and confirmed during the next commercial review.</p></div><div className="actions"><Btn href="/white-label">Explore White Label</Btn><Btn href="/global" secondary>Global deployment</Btn></div></div></section>
 <section className="band"><div className="band-inner"><h2>Start with the identity. Add capability when you need it.</h2><Btn href="/signup">Create profile</Btn></div></section>
 </Shell>}

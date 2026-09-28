@@ -29,7 +29,7 @@ export default function Page(){return <Shell>
 </div></div></section>
 
 <section id="sport" className="section"><div className="section-inner"><div className="section-head"><div><Kicker>Sport & recreation</Kicker><h2>Airsoft and paintball sit here — as sector use cases.</h2></div><p className="section-intro">Organised airsoft and paintball remain useful proving environments for participant identity, team operations, equipment, scenarios, event control and ATAC. They no longer define the Vanguard brand.</p></div><div className="content-grid">
-<div className="content-card"><Icon name="users"/><h3>Airsoft</h3><p>Players, teams, kit, events, scenarios and field awareness.</p></div>
+<a className="content-card" href="/airsoft"><Icon name="users"/><h3>Airsoft</h3><p>Sponsored team programme, 6 Troop, 7 Troop, player workspaces, command structure, kit, events and field awareness.</p><span className="card-link">Explore airsoft <Icon name="arrow" size={16}/></span></a>
 <div className="content-card"><Icon name="target"/><h3>Paintball</h3><p>Teams, tournaments, equipment, site operations and organiser workflows.</p></div>
 <div className="content-card"><Icon name="calendar"/><h3>Organised field sport</h3><p>Use the same event, readiness and after-action model for other structured activities.</p></div>
 </div></div></section>
