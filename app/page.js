@@ -107,6 +107,24 @@ export default function Home(){return <Shell>
     </div>
   </section>
 
+  <section className="section brand-story">
+    <div className="section-inner">
+      <div className="section-head">
+        <div><Kicker>The Vanguard mark</Kicker><h2>Strength with a destination.</h2></div>
+        <p className="section-intro">The Vanguard identity is built around disciplined strength, earned responsibility and the reason capability matters in the first place: helping people move through challenge toward confidence, community and the freedom to enjoy what comes next.</p>
+      </div>
+      <div className="brand-meaning-grid">
+        <div className="brand-meaning-card"><b>01 / EXCALIBUR</b><h3>Responsibility must be earned.</h3><p>The Excalibur reference represents purpose, judgement and the responsibility that comes with being trusted to lead.</p></div>
+        <div className="brand-meaning-card"><b>02 / GLADIATOR</b><h3>Controlled strength.</h3><p>The helmet represents resilience, preparation and the discipline to remain composed when the environment becomes demanding.</p></div>
+        <div className="brand-meaning-card"><b>03 / THE ROAD</b><h3>Progress is deliberate.</h3><p>The road is the journey from inexperience to capability: training, repetition, teamwork, responsibility and continuous improvement.</p></div>
+        <div className="brand-meaning-card"><b>04 / THE LONE FIGURE</b><h3>The destination is peace.</h3><p>The figure moving toward the light represents the human purpose behind the system: prepare well, do the difficult work, then have the space to live and enjoy the experience.</p></div>
+      </div>
+      <div className="brand-quote"><p>Vanguard is not about aggression. It is about being prepared enough, disciplined enough and connected enough to handle complexity — then move beyond it.</p></div>
+      <div className="brand-principles"><span>PEOPLE</span><span>TRAINING</span><span>COMMUNITY</span><span>REAL-WORLD SKILLS</span></div>
+      <div className="actions"><Btn href="/brand">Read the brand story</Btn></div>
+    </div>
+  </section>
+
   <section className="section product-showcase">
     <div className="section-inner">
       <div className="section-head">
