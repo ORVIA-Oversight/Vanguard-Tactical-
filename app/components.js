@@ -21,18 +21,54 @@ export function Icon({ name, size = 22 }) {
   return <svg className="icon" width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><path d={iconPaths[name] || iconPaths.target}/></svg>;
 }
 
+const publicLinks = [
+  ['/platform','Platform'],
+  ['/players','Players'],
+  ['/teams','Teams'],
+  ['/organisers','Organisers'],
+  ['/sites','Sites'],
+  ['/pricing','Pricing']
+];
+
 export function Header() {
   return <header className="site-header">
-    <Link href="/" className="brand" aria-label="Vanguard Tactical home"><span className="brand-logo" aria-hidden="true"></span><span className="brand-type"><b>VANGUARD</b><small>TACTICAL</small></span></Link>
-    <nav className="desktop-nav">
-      <Link href="/platform">PLATFORM</Link><Link href="/players">PLAYERS</Link><Link href="/atac">ATAC</Link><Link href="/scenarios">SCENARIOS</Link><Link href="/for-teams-organisers">TEAMS & ORGANISERS</Link><Link href="/pricing">PRICING</Link>
+    <Link href="/" className="brand" aria-label="Vanguard Tactical home">
+      <span className="brand-logo" aria-hidden="true"></span>
+      <span className="brand-type"><b>Vanguard</b><small>Tactical</small></span>
+    </Link>
+    <nav className="desktop-nav" aria-label="Primary navigation">
+      {publicLinks.map(([href,label])=><Link href={href} key={href}>{label}</Link>)}
     </nav>
-    <div className="header-actions"><Link className="text-link" href="/login">SIGN IN</Link><Link className="btn btn-small" href="/signup">CREATE PROFILE</Link></div>
+    <div className="header-actions">
+      <Link className="text-link" href="/login">Log in</Link>
+      <Link className="btn btn-small" href="/signup">Create profile</Link>
+      <details className="mobile-nav">
+        <summary aria-label="Open navigation">Menu</summary>
+        <div className="mobile-nav-panel">
+          {publicLinks.map(([href,label])=><Link href={href} key={href}>{label}</Link>)}
+          <Link href="/atac">ATAC</Link>
+          <Link href="/scenarios">Scenarios</Link>
+          <Link href="/6-troop">6 Troop proof</Link>
+          <Link href="/login">Log in</Link>
+        </div>
+      </details>
+    </div>
   </header>;
 }
 
 export function Footer() {
-  return <footer className="footer"><div className="footer-grid"><div><div className="brand footer-brand"><span className="brand-logo footer-logo" aria-hidden="true"></span><span className="brand-type"><b>VANGUARD</b><small>TACTICAL</small></span></div><p>One platform for player identity, teams, events, equipment, scenarios and live field awareness.</p></div><div><h4>PLATFORM</h4><Link href="/platform">Platform</Link><Link href="/players">Players</Link><Link href="/atac">ATAC</Link><Link href="/scenarios">Scenarios</Link><Link href="/pricing">Pricing</Link></div><div><h4>ECOSYSTEM</h4><Link href="/for-teams-organisers">Teams & organisers</Link><Link href="/ecosystem">Sponsored teams</Link><Link href="/6-troop">6 Troop case study</Link></div><div><h4>ACCESS</h4><Link href="/signup">Create profile</Link><Link href="/login">Sign in</Link><Link href="/workspace">Workspace demo</Link></div></div><div className="footer-bottom"><span>© 2026 Vanguard Tactical prototype.</span><span>Private alpha — company and commercial details will be added before public launch.</span></div></footer>;
+  return <footer className="footer">
+    <div className="footer-grid">
+      <div>
+        <div className="brand footer-brand"><span className="brand-logo footer-logo" aria-hidden="true"></span><span className="brand-type"><b>Vanguard</b><small>Tactical</small></span></div>
+        <p>The digital operating system for organised airsoft — connecting player identity, team operations, events, equipment and field awareness.</p>
+      </div>
+      <div><h4>Platform</h4><Link href="/platform">Overview</Link><Link href="/players">Players</Link><Link href="/teams">Teams</Link><Link href="/pricing">Pricing</Link></div>
+      <div><h4>Operators</h4><Link href="/organisers">Organisers</Link><Link href="/sites">Sites</Link><Link href="/atac">ATAC</Link><Link href="/scenarios">Scenarios</Link></div>
+      <div><h4>Proof & access</h4><Link href="/6-troop">6 Troop case study</Link><Link href="/signup">Create profile</Link><Link href="/login">Log in</Link><Link href="/workspace">Workspace demo</Link></div>
+    </div>
+    <div className="footer-bottom"><span>© 2026 Vanguard Tactical.</span><span>Private alpha — live and planned capabilities are labelled separately.</span></div>
+  </footer>;
 }
 
 export function Shell({ children }) { return <><Header/><main>{children}</main><Footer/></>; }
@@ -41,15 +77,15 @@ export function Kicker({ children }) { return <div className="kicker"><span></sp
 export function Btn({ href, children, secondary=false }) { return <Link href={href} className={secondary ? 'btn btn-ghost' : 'btn'}>{children}<Icon name="arrow" size={17}/></Link>; }
 
 export function ImagePanel({ image, label, title, className='' }) {
-  return <div className={`image-panel ${className}`} style={{backgroundImage:`linear-gradient(180deg, rgba(8,10,7,.04), rgba(8,10,7,.78)), url('${image}')`}}><div className="image-caption"><span>{label}</span><b>{title}</b></div></div>;
+  return <div className={`image-panel ${className}`} style={{backgroundImage:`linear-gradient(180deg, rgba(8,10,7,.04), rgba(8,10,7,.72)), url('${image}')`}}><div className="image-caption"><span>{label}</span><b>{title}</b></div></div>;
 }
 
 export function Metric({ value, label }) { return <div className="metric"><b>{value}</b><span>{label}</span></div>; }
 
 export function ProductCard({ icon, tag, title, children, href }) {
- return <Link href={href} className="product-card"><div className="product-icon"><Icon name={icon}/></div><span className="eyebrow">{tag}</span><h3>{title}</h3><p>{children}</p><div className="card-link">EXPLORE <Icon name="arrow" size={16}/></div></Link>
+ return <Link href={href} className="product-card"><div className="product-icon"><Icon name={icon}/></div><span className="eyebrow">{tag}</span><h3>{title}</h3><p>{children}</p><div className="card-link">Explore <Icon name="arrow" size={16}/></div></Link>
 }
 
 export function PageHero({ kicker, title, text, image, chips=[] }) {
- return <section className="page-hero"><div className="page-hero-copy"><Kicker>{kicker}</Kicker><h1>{title}</h1><p>{text}</p><div className="chip-row">{chips.map(c=><span className="chip" key={c}>{c}</span>)}</div></div><ImagePanel image={image} label="VANGUARD TACTICAL" title={kicker}/></section>
+ return <section className="page-hero"><div className="page-hero-copy"><Kicker>{kicker}</Kicker><h1>{title}</h1><p>{text}</p><div className="chip-row">{chips.map(c=><span className="chip" key={c}>{c}</span>)}</div></div><ImagePanel image={image} label="Vanguard Tactical" title={kicker}/></section>
 }
