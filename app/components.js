@@ -26,6 +26,7 @@ export function Header() {
     <Link href="/" className="brand" aria-label="Vanguard Tactical home"><span className="brand-logo" aria-hidden="true"></span><span className="brand-type"><b>Vanguard</b><small>Tactical</small></span></Link>
     <nav className="desktop-nav" aria-label="Primary navigation">
       <Link href="/platform">Platform</Link>
+      <Link href="/sectors">Use cases</Link>
       <Link href="/players">Players</Link>
       <Link href="/teams">Teams</Link>
       <Link href="/organisers">Organisers</Link>
@@ -37,7 +38,7 @@ export function Header() {
 }
 
 export function Footer() {
-  return <footer className="footer"><div className="footer-grid"><div><div className="brand footer-brand"><span className="brand-logo footer-logo" aria-hidden="true"></span><span className="brand-type"><b>Vanguard</b><small>Tactical</small></span></div><p>The digital operating system for organised airsoft — connecting players, teams, events, equipment, scenarios and field awareness.</p></div><div><h4>Platform</h4><Link href="/platform">Platform</Link><Link href="/players">Players</Link><Link href="/teams">Teams</Link><Link href="/pricing">Pricing</Link></div><div><h4>Commercial users</h4><Link href="/organisers">Organisers</Link><Link href="/sites">Sites</Link><Link href="/atac">ATAC</Link><Link href="/scenarios">Scenarios</Link></div><div><h4>Proof & access</h4><Link href="/6-troop">6 Troop case study</Link><Link href="/signup">Create profile</Link><Link href="/login">Log in</Link><Link href="/workspace">Workspace demo</Link></div></div><div className="footer-bottom"><span>© 2026 Vanguard Tactical.</span><span>Private alpha — capabilities are labelled live, in development or planned.</span></div></footer>;
+  return <footer className="footer"><div className="footer-grid"><div><div className="brand footer-brand"><span className="brand-logo footer-logo" aria-hidden="true"></span><span className="brand-type"><b>Vanguard</b><small>Tactical</small></span></div><p>A connected operating platform for organised field activities — from airsoft and paintball to events, training exercises and readiness.</p></div><div><h4>Platform</h4><Link href="/platform">Platform</Link><Link href="/sectors">Use cases</Link><Link href="/players">Players</Link><Link href="/teams">Teams</Link><Link href="/pricing">Pricing</Link></div><div><h4>Commercial users</h4><Link href="/organisers">Organisers</Link><Link href="/sites">Sites</Link><Link href="/atac">ATAC</Link><Link href="/scenarios">Scenarios</Link></div><div><h4>Proof & access</h4><Link href="/6-troop">6 Troop case study</Link><Link href="/signup">Create profile</Link><Link href="/login">Log in</Link><Link href="/workspace">Workspace demo</Link></div></div><div className="footer-bottom"><span>© 2026 Vanguard Tactical.</span><span>Private alpha — capabilities are labelled live, in development or planned.</span></div></footer>;
 }
 
 export function Shell({ children }) { return <><Header/><main>{children}</main><Footer/></>; }
