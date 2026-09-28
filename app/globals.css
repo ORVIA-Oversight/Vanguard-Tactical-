@@ -1,20 +1,20 @@
 :root{
-  --navy:#0B1722;
-  --navy-2:#10293A;
+  --navy:#081722;
+  --navy-2:#0B2234;
   --gold:#D4AF7C;
-  --gold-strong:#C99A5B;
+  --gold-strong:#C9A96B;
   --teal:#087A86;
   --teal-deep:#066570;
   --cyan:#50C6D2;
   --olive:#626A53;
   --ink:#14202A;
   --muted:#66717B;
-  --paper:#F7F4EF;
-  --paper-2:#F1EEE8;
+  --paper:#F4F1EA;
+  --paper-2:#E8E6DD;
   --white:#FFFFFF;
   --line:#DED8CF;
   --steel:#D5DBDD;
-  --deep:#0D1E2A;
+  --deep:#081722;
   --graphite:#171C20;
   --success:#2E7D4F;
   --warning:#8A5A00;
@@ -466,3 +466,21 @@ p{color:var(--muted);line-height:1.67}
 .readiness-grid h3{margin-bottom:10px}
 @media(max-width:1180px){.readiness-grid{grid-template-columns:repeat(2,1fr)}}
 @media(max-width:800px){.hero-mosaic{grid-template-columns:1fr 1fr}.sector-grid{grid-template-columns:1fr}.readiness-grid{grid-template-columns:1fr}.sector-card{min-height:300px}}
+
+/* Vanguard brand system */
+.brand-story{background:#081722;color:#fff;overflow:hidden;position:relative}
+.brand-story:before{content:"";position:absolute;inset:auto -8% -28% auto;width:620px;height:620px;border-radius:50%;border:1px solid rgba(212,175,124,.16);box-shadow:0 0 0 70px rgba(212,175,124,.035),0 0 0 140px rgba(212,175,124,.02)}
+.brand-story .section-inner{position:relative;z-index:2}
+.brand-story h2,.brand-story h3{color:#fff}
+.brand-story p{color:#D8DEE3}
+.brand-meaning-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+.brand-meaning-card{padding:28px;border:1px solid rgba(255,255,255,.13);border-radius:22px;background:rgba(255,255,255,.04)}
+.brand-meaning-card b{display:block;font-family:var(--font-plex),"IBM Plex Mono",monospace;color:#D4AF7C;font-size:.72rem;letter-spacing:.1em;margin-bottom:20px}
+.brand-meaning-card h3{font-size:1.4rem;margin-bottom:10px}
+.brand-principles{display:flex;gap:12px;flex-wrap:wrap;margin-top:30px}
+.brand-principles span{padding:9px 12px;border:1px solid rgba(255,255,255,.18);border-radius:999px;font-family:var(--font-plex),"IBM Plex Mono",monospace;font-size:.72rem;letter-spacing:.06em;color:#E8E6DD}
+.brand-quote{margin-top:38px;padding:28px;border-left:3px solid #D4AF7C;background:rgba(255,255,255,.035);max-width:1000px}
+.brand-quote p{font-size:1.24rem;color:white;margin:0}
+.module-number{font-family:var(--font-plex),"IBM Plex Mono",monospace;color:var(--gold);font-size:.72rem;letter-spacing:.1em;margin-bottom:20px}
+@media(max-width:1100px){.brand-meaning-grid{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:700px){.brand-meaning-grid{grid-template-columns:1fr}}
