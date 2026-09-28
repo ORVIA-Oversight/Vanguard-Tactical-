@@ -77,7 +77,7 @@ p{color:var(--muted);line-height:1.67}
 .brand{display:flex;align-items:center;gap:12px;white-space:nowrap}
 .brand-logo{
   width:42px;height:42px;display:block;flex:none;
-  background:url('https://raw.githubusercontent.com/ORVIA-Oversight/Vanguard-Tactical-/main/Vanguard%20Tactical%20Logo%202026.png') center/contain no-repeat;
+  background:url('/vanguard-logo-2026.svg') center/contain no-repeat;
 }
 .brand-type{display:block}
 .brand-type b{display:block;font-size:1.05rem;letter-spacing:.035em;color:var(--navy)}
@@ -126,7 +126,7 @@ p{color:var(--muted);line-height:1.67}
 }
 .hero-logo-lockup{
   width:min(360px,38vw);height:132px;margin:0 0 18px;
-  background:url('https://raw.githubusercontent.com/ORVIA-Oversight/Vanguard-Tactical-/main/Vanguard%20Tactical%20Logo%202026.png') left center/contain no-repeat;
+  background:url('/vanguard-logo-2026.svg') left center/contain no-repeat;
 }
 .hero h1{color:white;margin:0 0 28px}
 .hero h1 em{font-style:normal;color:#FFD89B}
