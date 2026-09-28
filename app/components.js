@@ -31,8 +31,8 @@ export function Header() {
       <Link href="/platform">Platform</Link>
       <Link href="/atac">Field Ops</Link>
       <Link href="/sectors">Sectors</Link>
-      <Link href="/organisers">Control</Link>
-      <Link href="/sites">Sites</Link>
+      <Link href="/white-label">White Label</Link>
+      <Link href="/global">Global</Link>
       <Link href="/pricing">Pricing</Link>
     </nav>
     <div className="header-actions"><Link className="text-link" href="/login">Log in</Link><Link className="btn btn-small" href="/signup">Start free</Link></div>
@@ -40,7 +40,7 @@ export function Header() {
 }
 
 export function Footer() {
-  return <footer className="footer"><div className="footer-grid"><div><div className="brand footer-brand"><span className="brand-logo footer-logo" aria-hidden="true"></span><span className="brand-type"><b>Vanguard</b><small>Tactical</small></span></div><p>A human-led operational platform for command, tracking, communications, readiness and field coordination.</p></div><div><h4>Platform</h4><Link href="/platform">Platform</Link><Link href="/atac">Field operations</Link><Link href="/sectors">Sectors</Link><Link href="/pricing">Pricing</Link></div><div><h4>Commercial users</h4><Link href="/organisers">Organisers</Link><Link href="/sites">Sites</Link><Link href="/atac">ATAC</Link><Link href="/scenarios">Scenarios</Link></div><div><h4>Programmes & access</h4><Link href="/airsoft">Airsoft programme</Link><Link href="/6-troop">6 Troop</Link><Link href="/signup">Create profile</Link><Link href="/login">Log in</Link></div></div><div className="footer-bottom"><span>© 2026 Vanguard Tactical.</span><span>Private alpha — capabilities are labelled live, in development or planned.</span></div></footer>;
+  return <footer className="footer"><div className="footer-grid"><div><div className="brand footer-brand"><span className="brand-logo footer-logo" aria-hidden="true"></span><span className="brand-type"><b>Vanguard</b><small>Tactical</small></span></div><p>A human-led operational platform for command, tracking, communications, readiness and field coordination.</p></div><div><h4>Platform</h4><Link href="/platform">Platform</Link><Link href="/atac">Field operations</Link><Link href="/sectors">Sectors</Link><Link href="/white-label">White Label</Link><Link href="/global">Global</Link><Link href="/pricing">Pricing</Link></div><div><h4>Commercial users</h4><Link href="/organisers">Organisers</Link><Link href="/sites">Sites</Link><Link href="/atac">ATAC</Link><Link href="/scenarios">Scenarios</Link></div><div><h4>Programmes & access</h4><Link href="/airsoft">Airsoft programme</Link><Link href="/6-troop">6 Troop</Link><Link href="/signup">Create profile</Link><Link href="/login">Log in</Link></div></div><div className="footer-bottom"><span>© 2026 Vanguard Tactical.</span><span>Private alpha — capabilities are labelled live, in development or planned.</span></div></footer>;
 }
 
 export function Shell({ children }) { return <><Header/><main>{children}</main><Footer/></>; }
