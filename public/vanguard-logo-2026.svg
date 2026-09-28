@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 820 220" role="img" aria-labelledby="t d">
+<title id="t">Vanguard Tactical</title><desc id="d">Vanguard Tactical compass, helmet and journey mark in navy and champagne gold</desc>
+<defs><style>
+.n{fill:#0B1722}.g{fill:#D4AF7C}.s{fill:none;stroke:#D4AF7C;stroke-width:7;stroke-linecap:round}
+.word{font-family:Arial,Helvetica,sans-serif;font-weight:900;letter-spacing:2px}.sub{font-family:Arial,Helvetica,sans-serif;font-weight:700;letter-spacing:8px}.tag{font-family:Arial,Helvetica,sans-serif;font-weight:700;letter-spacing:3px}
+</style></defs>
+<g transform="translate(14 14)">
+  <circle cx="92" cy="92" r="72" class="s"/>
+  <path class="g" d="M92 3l9 22H83zM181 92l-22 9V83zM3 92l22-9v18z"/>
+  <circle cx="92" cy="104" r="26" class="g"/>
+  <path class="g" d="M52 74c8-33 29-50 59-53l-12 18c-18 5-30 18-35 36z"/>
+  <path class="n" d="M65 67c12-17 27-25 47-24l-10 14c-12 1-21 7-28 17zM110 44l25 5-13 15 10 12 8 37-28-19-18-8 5-16-9-8z"/>
+  <path class="n" d="M12 164l53-56 20 25 7-16 11 19 17-26 52 54H12z"/>
+  <path fill="#fff" d="M76 169c14-21 26-33 36-38 12 12 17 23 16 38h-13c-1-10-4-17-8-22-5 4-11 11-17 22z"/>
+  <path class="n" d="M90 126h4v16h-4z"/><circle cx="92" cy="121" r="4" class="n"/>
+</g>
+<g transform="translate(220 38)">
+  <text x="0" y="62" font-size="58" class="n word">VANGUARD</text>
+  <line x1="2" y1="92" x2="56" y2="92" class="s" stroke-width="4"/>
+  <text x="74" y="103" font-size="30" class="g sub">TACTICAL</text>
+  <line x1="470" y1="92" x2="530" y2="92" class="s" stroke-width="4"/>
+  <text x="2" y="142" font-size="13" class="n tag">PEOPLE  |  TRAINING  |  COMMUNITY  |  REAL-WORLD SKILLS</text>
+</g>
+</svg>
