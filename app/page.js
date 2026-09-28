@@ -72,6 +72,21 @@ export default function Home(){return <Shell>
     </div>
   </section>
 
+  <section className="section">
+    <div className="section-inner">
+      <div className="section-head">
+        <div><Kicker>Vanguard visual language</Kicker><h2>One mark. Distinct operating symbols.</h2></div>
+        <p className="section-intro">The full Vanguard mark remains the parent identity. Its individual elements can then signpost the part of the system the user is entering without creating separate brands.</p>
+      </div>
+      <div className="clarity-grid">
+        <div className="content-card"><Icon name="sword"/><h3>Excalibur / overview</h3><p>Used for Command, ATAC, operational overview and decisive action — the part of Vanguard that sees the whole picture and turns information into controlled action.</p></div>
+        <div className="content-card"><Icon name="helmet"/><h3>Gladiator / teams</h3><p>Used for teams, leadership, training, resilience and the sponsored 6 Troop / 7 Troop programme — controlled strength built through discipline and shared responsibility.</p></div>
+        <div className="content-card"><Icon name="journey"/><h3>The road / people</h3><p>Used for personal workspaces, welfare, progression, community and development — the route from where someone starts to where they want to be.</p></div>
+        <div className="content-card"><Icon name="target"/><h3>Full mark / Vanguard</h3><p>The complete symbol stays with the parent brand, bringing command, people, teams, readiness and field operations together under one identity.</p></div>
+      </div>
+    </div>
+  </section>
+
   <section className="section section-dark">
     <div className="section-inner split">
       <div>
