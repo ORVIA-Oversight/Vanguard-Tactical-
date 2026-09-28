@@ -14,9 +14,9 @@ const features=[
 export default function Page(){
   return <Shell>
     <PageHero
-      kicker="VANGUARD × ATAC"
-      title="SEE THE TEAM. SEE THE GROUND. RUN THE EVENT."
-      text="ATAC is the live field-awareness layer that fits naturally beside Vanguard events: authorised participants deliberately join an event, share their position while active, report ground information and give Control one common operational picture."
+      kicker="FIELD OPERATIONS / ATAC"
+      title="SEE THE FIELD. SEE THE STATUS. COORDINATE THE RESPONSE."
+      text="ATAC is Vanguard's live field-awareness layer: authorised field users deliberately join an operation, share position while active, report ground information and give Control one common operational picture."
       image={IMG}
       chips={['LIVE STATUS','CALLSIGNS','GROUND MARKS','EVENT BRIEF','VOICE MESSAGES']}
     />
@@ -72,7 +72,7 @@ export default function Page(){
     <section className="section">
       <div className="section-head">
         <div><Kicker>WHAT IS ALREADY UNDERNEATH IT</Kicker><h2>ATAC ALREADY HAS A REAL-TIME BACK END.</h2></div>
-        <p className="section-intro">The live ATAC build is not a mock-up. It currently runs on Viktor Space with a Convex real-time database. Vanguard does not need to recreate the field engine from zero; the integration job is to connect Vanguard identity, teams and events to the capability that already exists.</p>
+        <p className="section-intro">The current ATAC field layer is not a mock-up. It currently runs on Viktor Space with a Convex real-time database. Vanguard does not need to recreate the field engine from zero; the integration job is to connect operational identity, teams, incidents and events to the capability that already exists.</p>
       </div>
       <div className="content-grid">
         <div className="content-card"><Icon name="signal"/><h3>CONVEX REAL-TIME DATA</h3><p>Events, players, positions, messages, waypoints and administrator sessions are stored behind live subscriptions, so connected command views receive new field data without refreshing.</p></div>
@@ -86,8 +86,8 @@ export default function Page(){
 
     <section className="section">
       <div className="section-head">
-        <div><Kicker>HOW IT FITS</Kicker><h2>VANGUARD BEFORE. ATAC DURING. LEARNING AFTER.</h2></div>
-        <p className="section-intro">The point is not another standalone app. It is a field layer attached to the same team and event model.</p>
+        <div><Kicker>HOW IT FITS</Kicker><h2>COMMAND BEFORE. ATAC DURING. REVIEW AFTER.</h2></div>
+        <p className="section-intro">The point is not another standalone app. It is the field layer attached to the same operational command, team and event model.</p>
       </div>
       <div className="steps atac-steps">
         <div className="step"><b>01 / PREPARE</b><h3>VANGUARD EVENT</h3><p>Roster, attendance, assignment, equipment, timings and controlled documents.</p></div>
@@ -173,10 +173,10 @@ export default function Page(){
       </div>
       <div className="actions">
         <a className="btn" href="https://atac.orvia.org.uk/join" target="_blank" rel="noreferrer">OPEN ATAC FIELD JOIN <Icon name="arrow" size={17}/></a>
-        <Btn href="/events" secondary>SEE VANGUARD EVENTS</Btn>
+        <Btn href="/platform" secondary>SEE VANGUARD PLATFORM</Btn>
       </div>
     </section>
 
-    <section className="band"><h2>PLAN IT IN VANGUARD. SEE IT MOVE THROUGH ATAC.</h2><Btn href="/pricing">EXPLORE VANGUARD</Btn></section>
+    <section className="band"><h2>PLAN IN COMMAND. SEE THE FIELD THROUGH ATAC.</h2><Btn href="/pricing">EXPLORE VANGUARD</Btn></section>
   </Shell>
 }
