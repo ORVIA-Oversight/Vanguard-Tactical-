@@ -1,30 +1,86 @@
 import {Shell,PageHero,Kicker,Icon,Btn} from '../components';
+
 const IMG='https://images.pexels.com/photos/20335223/pexels-photo-20335223.jpeg?auto=compress&cs=tinysrgb&w=1800';
+
 const plans=[
-  ['Player','Free','Portable identity and core participation.',['Player Passport','Team memberships','Basic event attendance','Personal equipment','Privacy controls']],
-  ['Player+','£4.99','For players who want more history and tools.',['Everything in Player','Extended event history','Advanced loadouts','Premium profile tools','Priority alpha access']],
-  ['Team','£19','For organised teams.',['Team workspace','Roster & attendance','Events','Team equipment','Actions','Documents']],
-  ['Team Pro','£49','For established teams and multiple elements.',['Everything in Team','Sub-units / reserve structures','Enhanced equipment','AAR workflow','Scenario access','Priority support']],
-  ['Organiser','£39','For organisers and sites.',['Event builder','Staff roles','Briefing & check-in','Scenario assignment','ATAC-ready event records','Six annual live-event credits proposed']]
+  ['Individual','Free','Core identity, participation and personal readiness.',['Portable profile','Team / organisation relationships','Basic event participation','Personal equipment','Privacy controls']],
+  ['Individual Pro','£4.99','Deeper personal history and premium operational tools.',['Everything in Individual','Extended activity history','Advanced loadouts / capability records','Premium profile tools','Priority alpha access']],
+  ['Team','£29','Operational workspace for organised teams and units.',['Team workspace','Roster & availability','Events / deployments','Team equipment','Actions','Documents']],
+  ['Organiser / Site','£199','Commercial event, venue and field-operations capability.',['Event builder','Staff roles','Briefing & check-in','Scenario / task assignment','ATAC-ready operational records','Commercial support path']],
+  ['Enterprise','£499','Higher-volume, multi-site and partner deployments.',['Multi-event operations','Enhanced controls','Partner workflows','Scenario / template library','Priority support','Bespoke onboarding pathway']]
 ];
-export const metadata={title:'Pricing',description:'Private-alpha validation pricing for Vanguard Tactical players, teams and organisers.'};
+
+export const metadata={
+  title:'Pricing',
+  description:'Private-alpha validation pricing for Vanguard Tactical individual, team, organiser, site and enterprise capability.'
+};
+
 export default function Page(){return <Shell>
-<PageHero kicker="Launch pricing" title="Start free. Pay for specialist capability." text="These are private-alpha validation prices, not a live checkout. Payments remain disabled until the legal, banking, terms and Stripe estate is ready." image={IMG} chips={['PLAYER FREE','PLAYER+ £4.99','TEAM £19','TEAM PRO £49','ORGANISER £39']}/>
-<section className="section"><div className="section-inner"><div className="section-head"><div><Kicker>Subscriptions</Kicker><h2>The network stays easy to join.</h2></div><p className="section-intro">Players should not need a paid account simply to join a team or event. Revenue comes from enhanced player tools, specialist team workflows, organiser operations, scenarios and ATAC activations.</p></div>
-<div className="price-grid">{plans.map((p,i)=><div className={'price-card '+(i===3?'featured':'')} key={p[0]}><span className="eyebrow">{i===0?'Core identity':i===3?'Team alpha target':'Proposed'}</span><h3>{p[0]}</h3><div className="price">{p[1]}{p[1]!=='Free'&&<small>/month</small>}</div><p>{p[2]}</p><ul>{p[3].map(x=><li key={x}><Icon name="check" size={15}/>{x}</li>)}</ul><Btn href="/signup">Alpha access</Btn></div>)}</div>
-<div className="pricing-note">Launch pricing is intentional validation pricing. Checkout remains off until Vanguard is commercially ready to take payment.</div>
-</div></section>
-<section className="section section-dark"><div className="section-inner"><div className="section-head"><div><Kicker>Event capability</Kicker><h2>Add ATAC and scenarios when the event needs them.</h2></div><p className="section-intro">These remain proposed validation bands until delivery cost, support effort and margin are verified.</p></div><div className="content-grid">
-<div className="content-card"><Icon name="map"/><h3>ATAC activation</h3><div className="price">£49<small>/event from</small></div><p>Proposed event-scoped live field-awareness activation. Capacity bands remain to be validated.</p></div>
-<div className="content-card"><Icon name="play"/><h3>Scenario packs</h3><div className="price">£19<small>–149</small></div><p>From downloadable mission structures to multi-phase ATAC-enabled event packs.</p></div>
-<div className="content-card"><Icon name="box"/><h3>Field systems</h3><div className="price">TBC</div><p>Future control-node and managed device packages only after demand and operating cost prove the case.</p></div>
-</div></div></section>
-<section className="section"><div className="section-inner"><div className="section-heading"><Kicker>How upgrades change the product</Kicker><h2>Pay for capability, not access to your own identity.</h2></div><div className="clarity-grid">
-<div className="trust-card"><h3>Player</h3><p>Core identity and participation remain accessible.</p></div>
-<div className="trust-card"><h3>Player+</h3><p>Adds deeper personal history and premium player tooling.</p></div>
-<div className="trust-card"><h3>Team / Team Pro</h3><p>Adds operational team management, then deeper multi-element and review capability.</p></div>
-<div className="trust-card"><h3>Organiser</h3><p>Adds event-specific commercial operations and ATAC-ready event structures.</p></div>
-</div></div></section>
-<section className="section"><div className="section-inner"><div className="section-head"><div><Kicker>Enterprise deployment</Kicker><h2>Need Vanguard under your own brand?</h2></div><p className="section-intro">White Label is a separate implementation route for organisations that need their own domain, identity, terminology, roles and managed operating environment. Pricing will be scoped after discovery and confirmed during the next commercial review.</p></div><div className="actions"><Btn href="/white-label">Explore White Label</Btn><Btn href="/global" secondary>Global deployment</Btn></div></div></section>
-<section className="band"><div className="band-inner"><h2>Start with the identity. Add capability when you need it.</h2><Btn href="/signup">Create profile</Btn></div></section>
+  <PageHero
+    kicker="Launch pricing"
+    title="Start with the core. Add capability as the operation grows."
+    text="These are current validation targets for the Vanguard commercial model, not a live checkout. Payments remain disabled until the legal, banking, terms and payment estate is ready."
+    image={IMG}
+    chips={['INDIVIDUAL FREE','PRO £4.99','TEAM £29','ORGANISER / SITE £199+','ENTERPRISE £499+']}
+  />
+
+  <section className="section">
+    <div className="section-inner">
+      <div className="section-head">
+        <div><Kicker>Subscriptions</Kicker><h2>Keep entry simple. Charge for operational capability.</h2></div>
+        <p className="section-intro">Vanguard should not put a paywall in front of a person's core identity or basic participation. Revenue comes from premium tooling, team operations, commercial organiser/site workflows, field capability and larger deployments.</p>
+      </div>
+
+      <div className="price-grid">
+        {plans.map((p,i)=><div className={'price-card '+(i===2?'featured':'')} key={p[0]}>
+          <span className="eyebrow">{i===0?'Core access':i===2?'Primary team plan':'Validation target'}</span>
+          <h3>{p[0]}</h3>
+          <div className="price">{p[1]}{p[1]!=='Free'&&<small>/month from</small>}</div>
+          <p>{p[2]}</p>
+          <ul>{p[3].map(x=><li key={x}><Icon name="check" size={15}/>{x}</li>)}</ul>
+          <Btn href="/signup">Request alpha access</Btn>
+        </div>)}
+      </div>
+
+      <div className="pricing-note">These prices are current commercial validation targets. Checkout remains off until Vanguard is ready to contract, support and take payment safely.</div>
+    </div>
+  </section>
+
+  <section className="section section-dark">
+    <div className="section-inner">
+      <div className="section-head">
+        <div><Kicker>Additional capability</Kicker><h2>Add specialist capability without forcing every customer into a larger subscription.</h2></div>
+        <p className="section-intro">Scenario content, implementation and event-scoped field capability can sit above subscription as separate commercial lines.</p>
+      </div>
+      <div className="content-grid">
+        <div className="content-card"><Icon name="play"/><h3>Scenario & operating packs</h3><div className="price">£29<small>–199</small></div><p>Reusable mission, exercise and operating packs ranging from compact templates to richer multi-phase structures.</p></div>
+        <div className="content-card"><Icon name="bolt"/><h3>Setup & onboarding</h3><div className="price">£1,500<small>+ bespoke</small></div><p>Structured setup, import, configuration, terminology and onboarding for larger organisations or partner deployments.</p></div>
+        <div className="content-card"><Icon name="map"/><h3>ATAC / field capability</h3><div className="price">Event scoped</div><p>Live field-awareness capability is priced to the event and operating requirement once the integration and support model is verified.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section className="section">
+    <div className="section-inner">
+      <div className="section-heading"><Kicker>Commercial principle</Kicker><h2>Pay for capability, not access to your own identity.</h2></div>
+      <div className="clarity-grid">
+        <div className="trust-card"><h3>Individual</h3><p>Core identity, participation and basic readiness remain accessible.</p></div>
+        <div className="trust-card"><h3>Individual Pro</h3><p>Adds deeper history and premium personal tooling.</p></div>
+        <div className="trust-card"><h3>Team</h3><p>Adds operational team management, events, equipment and workflow.</p></div>
+        <div className="trust-card"><h3>Organiser / Site / Enterprise</h3><p>Adds commercial operations, venue workflows, larger deployments and enhanced controls.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section className="section">
+    <div className="section-inner">
+      <div className="section-head">
+        <div><Kicker>Enterprise deployment</Kicker><h2>Need Vanguard under your own brand?</h2></div>
+        <p className="section-intro">White Label is a separate implementation route for organisations that need their own domain, identity, terminology, roles and managed operating environment. Final enterprise pricing remains scoped after discovery.</p>
+      </div>
+      <div className="actions"><Btn href="/white-label">Explore White Label</Btn><Btn href="/global" secondary>Global deployment</Btn></div>
+    </div>
+  </section>
+
+  <section className="band"><div className="band-inner"><h2>Start with the core. Add capability when you need it.</h2><Btn href="/signup">Request alpha access</Btn></div></section>
 </Shell>}
