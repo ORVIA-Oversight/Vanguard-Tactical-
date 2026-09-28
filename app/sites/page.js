@@ -1,0 +1,16 @@
+import {Shell,PageHero,Kicker,Icon,Btn} from '../components';
+const IMG='https://images.pexels.com/photos/3706636/pexels-photo-3706636.jpeg?auto=compress&cs=tinysrgb&w=1800';
+export const metadata={title:'Sites',description:'Commercial site and venue workflows for recurring airsoft events and organisers.'};
+export default function Page(){return <Shell>
+<PageHero kicker="For sites" title="Software that can grow with the venue." text="Vanguard is being shaped to support recurring events, organiser relationships, venue workflows and field capability without becoming a site-specific one-off system." image={IMG} chips={['RECURRING EVENTS','ORGANISERS','VENUE WORKFLOWS','FIELD CAPABILITY']}/>
+<section className="section"><div className="section-inner"><div className="section-head"><div><Kicker>Site operator view</Kicker><h2>Commercial infrastructure for the people running the ground.</h2></div><p className="section-intro">The site pathway is intentionally distinct from team administration. It is about repeatable events, organiser access, venue information and future capability services at a commercial operating level.</p></div><div className="content-grid">
+<div className="content-card"><Icon name="calendar"/><h3>Recurring events</h3><p>Reuse site structures and event patterns instead of rebuilding every weekend from scratch.</p></div>
+<div className="content-card"><Icon name="users"/><h3>Organiser access</h3><p>Give the right organiser the right event relationship without handing over the entire venue account.</p></div>
+<div className="content-card"><Icon name="map"/><h3>Venue information</h3><p>Keep arrival, briefing, AO and event-specific information attached to the right event.</p></div>
+<div className="content-card"><Icon name="signal"/><h3>Field capability</h3><p>ATAC and future field systems can sit alongside the site workflow where the event needs them.</p></div>
+<div className="content-card"><Icon name="box"/><h3>Capability partners</h3><p>Future hire and specialist-service relationships can be presented through Vanguard without forcing the site to own unnecessary stock.</p></div>
+<div className="content-card"><Icon name="shield"/><h3>Controlled roles</h3><p>Separate site, organiser and event permissions so commercial collaboration does not collapse into one shared admin account.</p></div>
+</div></div></section>
+<section className="section section-dark"><div className="section-inner"><div className="section-head"><div><Kicker>In development</Kicker><h2>Site workflows are a commercial growth path, not a fake finished module.</h2></div><p className="section-intro">The current platform already supports the player/team/event model. Site-specific commercial workflows will be released only as they are built and verified.</p></div></div></section>
+<section className="band"><div className="band-inner"><h2>From game day software to venue operating infrastructure.</h2><Btn href="/pricing">View plans</Btn></div></section>
+</Shell>}
