@@ -6,10 +6,10 @@ const plex = IBM_Plex_Mono({ subsets:['latin'], weight:['400','500','600'], vari
 
 export const metadata = {
   title: {
-    default: 'Vanguard Tactical | The digital operating system for organised airsoft',
+    default: 'Vanguard Tactical | Field operations, events and readiness',
     template: '%s | Vanguard Tactical'
   },
-  description: 'The digital operating system for organised airsoft: player profiles, teams, events, equipment, scenarios and ATAC field awareness.',
+  description: 'A connected operating platform for organised field activities — airsoft, paintball, events, training exercises, equipment, scenarios and readiness.',
   robots: {
     index: false,
     follow: false,
