@@ -484,3 +484,15 @@ p{color:var(--muted);line-height:1.67}
 .module-number{font-family:var(--font-plex),"IBM Plex Mono",monospace;color:var(--gold);font-size:.72rem;letter-spacing:.1em;margin-bottom:20px}
 @media(max-width:1100px){.brand-meaning-grid{grid-template-columns:repeat(2,1fr)}}
 @media(max-width:700px){.brand-meaning-grid{grid-template-columns:1fr}}
+
+
+/* Open-source live field map integration */
+.vanguard-live-map-shell{min-height:520px;background:#0d171d;border:1px solid #344148;border-radius:20px;padding:16px;overflow:hidden}
+.vanguard-live-map-head{display:flex;align-items:center;justify-content:space-between;gap:16px;margin-bottom:12px}
+.vanguard-live-map-head h3{margin:0;color:#fff}
+.vanguard-live-map{height:430px;border-radius:14px;overflow:hidden}
+.vanguard-live-map-foot{display:flex;align-items:center;gap:14px;margin-top:12px;color:#aab8bd;font-size:.78rem}
+.vanguard-map-marker{min-width:42px;height:42px;padding:0 7px;border-radius:50%;display:grid;place-items:center;background:#087A86;color:#fff;border:2px solid #fff;box-shadow:0 0 0 5px rgba(8,122,134,.18);font-family:var(--font-plex),monospace;font-size:.68rem}
+.vanguard-map-marker.is-delayed{background:#8A5A00;box-shadow:0 0 0 5px rgba(138,90,0,.18)}
+.vanguard-map-marker.is-user{background:#D4AF7C;color:#081722;box-shadow:0 0 0 5px rgba(212,175,124,.22)}
+@media(max-width:720px){.vanguard-live-map-head,.vanguard-live-map-foot{align-items:flex-start;flex-direction:column}.vanguard-live-map{height:380px}}
