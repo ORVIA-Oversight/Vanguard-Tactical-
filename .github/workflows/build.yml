@@ -2,6 +2,8 @@ name: Vanguard build verification
 on:
   push:
     branches: [main]
+  pull_request:
+    branches: [main]
   workflow_dispatch:
 
 permissions:
