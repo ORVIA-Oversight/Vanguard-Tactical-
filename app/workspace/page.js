@@ -21,8 +21,8 @@ export default function Page(){return <div className="workspace">
       <span className="eyebrow">MY VANGUARD</span>
       <h3>TEAM HOME</h3>
       {[
-        ['target','Overview'],['radio','Comms'],['calendar','Events'],['users','Troops'],
-        ['box','Kit locker'],['shield','Training'],['bolt','ATAC'],['eye','AAR']
+        ['target','Overview'],['radio','Comms'],['bolt','Team Signal'],['calendar','Events'],['users','Troops'],
+        ['box','Kit locker'],['shield','Training'],['map','ATAC'],['eye','AAR']
       ].map(([i,t])=><a href={'#'+t.toLowerCase().replaceAll(' ','-')} key={t}><Icon name={i} size={17}/>{t}</a>)}
     </aside>
 
@@ -61,6 +61,16 @@ export default function Page(){return <div className="workspace">
         <div className="event-row"><b>01</b><div>Fast room switching<small> / HQ, troop and later event rooms</small></div><span>READY</span></div>
         <div className="event-row"><b>02</b><div>Replies and event context<small> / Keep decisions next to the event record</small></div><span>NEXT</span></div>
         <div className="event-row"><b>03</b><div>Push notifications<small> / Controlled, member-friendly alerts</small></div><span>NEXT</span></div>
+      </div>
+
+      <div className="dash-card full" id="team-signal">
+        <span className="eyebrow">TEAM SIGNAL</span>
+        <h3>KEEP THE USEFUL BIT. LEAVE THE BANTER BEHIND.</h3>
+        <p>Deliberately record a team conversation, transcribe it, and extract only genuine team-relevant points such as decisions, actions, event changes, kit issues and useful AAR observations. Off-topic chat and jokes are not intended to become a permanent record.</p>
+        <div className="event-row"><b>REC</b><div>Visible recording / transcription state<small> / Everyone knows when capture is active</small></div><span>CONTROLLED</span></div>
+        <div className="event-row"><b>AI</b><div>Meaningful-signal filter<small> / Decisions · actions · events · kit · AAR</small></div><span>FILTERED</span></div>
+        <div className="event-row"><b>HUMAN</b><div>Approve before it becomes a team record<small> / Raw audio deletes after processing by default</small></div><span>REVIEW</span></div>
+        <Link href="/team-signal">Open Team Signal →</Link>
       </div>
 
       <div className="dash-card full">
