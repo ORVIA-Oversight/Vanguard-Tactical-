@@ -1,6 +1,5 @@
 import Link from 'next/link';
 import Image from 'next/image';
-import { signup } from '../auth-actions';
 
 export default async function Page({searchParams}){
   const p=await searchParams;
@@ -20,9 +19,9 @@ export default async function Page({searchParams}){
         <h2>Join the team.</h2>
         <p>This creates your personal login only. It does not create a business or make you an owner.</p>
         {p?.error&&<div className="form-error">{p.error}</div>}
-        <form action={signup}><input type="hidden" name="mode" value="member"/><label>YOUR NAME</label><input name="name" required/><label>EMAIL</label><input name="email" type="email" required/><label>PASSWORD</label><input name="password" type="password" minLength="8" required/><button className="member-submit" type="submit">CREATE MEMBER LOGIN</button></form>
+        <form action="/api/auth/signup" method="post"><input type="hidden" name="mode" value="member"/><label>YOUR NAME</label><input name="name" required/><label>EMAIL</label><input name="email" type="email" required/><label>PASSWORD</label><input name="password" type="password" minLength="8" required/><button className="member-submit" type="submit">CREATE MEMBER LOGIN</button></form>
         <div className="notice">Already have access? <Link href="/login">Sign in</Link> · <Link href="/join">Back to member access</Link></div>
       </div>
-    </> : <div className="login-wrap"><div className="login-visual" style={{backgroundImage:"url('https://images.pexels.com/photos/26461489/pexels-photo-26461489.jpeg?auto=compress&cs=tinysrgb&w=1600')"}}></div><div className="login-box"><Link href="/" className="brand"><span className="brand-mark">VT</span><span><b>VANGUARD</b><small>TACTICAL</small></span></Link><div style={{height:50}}/><span className="eyebrow">CREATE ACCESS</span><h1>Build your team.</h1><p>Create your login first. Vanguard then creates a private workspace for your organisation.</p>{p?.error&&<div className="form-error">{p.error}</div>}<form action={signup}><input type="hidden" name="mode" value="owner"/><label>YOUR NAME</label><input name="name" required/><label>EMAIL</label><input name="email" type="email" required/><label>PASSWORD</label><input name="password" type="password" minLength="8" required/><button className="btn" type="submit">CREATE ACCOUNT</button></form><div className="notice">Already have access? <Link href="/login">Sign in</Link>.</div></div></div>}
+    </> : <div className="login-wrap"><div className="login-visual" style={{backgroundImage:"url('https://images.pexels.com/photos/26461489/pexels-photo-26461489.jpeg?auto=compress&cs=tinysrgb&w=1600')"}}></div><div className="login-box"><Link href="/" className="brand"><span className="brand-mark">VT</span><span><b>VANGUARD</b><small>TACTICAL</small></span></Link><div style={{height:50}}/><span className="eyebrow">CREATE ACCESS</span><h1>Build your team.</h1><p>Create your login first. Vanguard then creates a private workspace for your organisation.</p>{p?.error&&<div className="form-error">{p.error}</div>}<form action="/api/auth/signup" method="post"><input type="hidden" name="mode" value="owner"/><label>YOUR NAME</label><input name="name" required/><label>EMAIL</label><input name="email" type="email" required/><label>PASSWORD</label><input name="password" type="password" minLength="8" required/><button className="btn" type="submit">CREATE ACCOUNT</button></form><div className="notice">Already have access? <Link href="/login">Sign in</Link>.</div></div></div>}
   </main>
 }
