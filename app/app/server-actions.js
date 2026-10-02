@@ -324,3 +324,28 @@ export async function prepareAtacRoster(formData) {
   revalidatePath('/app/events/' + eventId);
   revalidatePath('/app/atac');
 }
+
+
+export async function voteTeamPoll(formData) {
+  const { supabase, userId } = await requireUser();
+  const pollId = clean(formData.get('poll_id'));
+  const optionId = clean(formData.get('option_id'));
+  if (!pollId || !optionId) return;
+
+  const { data: option } = await supabase
+    .from('team_poll_options')
+    .select('id,poll_id')
+    .eq('id', optionId)
+    .eq('poll_id', pollId)
+    .maybeSingle();
+
+  if (!option?.id) return;
+
+  await supabase.from('team_poll_votes').upsert({
+    poll_id: pollId,
+    option_id: optionId,
+    user_id: userId
+  }, { onConflict: 'poll_id,user_id' });
+
+  revalidatePath('/app/polls');
+}
