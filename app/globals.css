@@ -584,3 +584,73 @@ body{background:#f7f4ec}
 .vf-relationship{padding:70px 6vw;display:flex;justify-content:space-between;gap:36px;align-items:end;background:linear-gradient(135deg,#e8f5f5,#fff6e6)}.vf-relationship>div{max-width:900px}.vf-relationship>div>span{font-size:11px;color:#087a86;font-weight:900;letter-spacing:.13em}.vf-relationship h2{font-size:58px;line-height:.95;color:#0b2d5c;margin:12px 0}.vf-relationship p{font-size:17px;color:#526b7a}.vf-relationship>a{background:#0b2d5c;color:#fff;border-radius:12px;padding:14px 18px;font-size:11px;font-weight:900;white-space:nowrap}
 @media(max-width:980px){.vf-hero,.vf-story-grid,.vf-feature,.vf-operating{grid-template-columns:1fr}.vf-routes{grid-template-columns:1fr 1fr}.vf-eco-grid,.vf-team-grid{grid-template-columns:1fr 1fr}.vf-visual{min-height:470px}.vf-feature-image{min-height:430px}.vf-operating-panel{min-height:430px}.vf-relationship{display:block}.vf-relationship>a{display:inline-flex;margin-top:18px}}
 @media(max-width:640px){.vf-hero{padding:46px 5vw}.vf-copy h1{font-size:58px}.vf-routes,.vf-eco-grid,.vf-team-grid,.vf-band{grid-template-columns:1fr}.vf-feature-copy h2,.vf-operating-copy h2,.vf-relationship h2{font-size:48px}.vf-list{grid-template-columns:1fr}.vf-glass{left:14px!important;right:14px!important}.vf-section,.vf-story{padding:68px 5vw}}
+
+
+/* Vanguard member access cinematic experience */
+.member-access{min-height:100vh;background:#07141a;color:#fff;overflow:hidden}
+.member-hero{min-height:580px;position:relative;padding:28px 42px 38px;background:
+  linear-gradient(90deg,rgba(5,17,22,.98) 0%,rgba(5,17,22,.95) 37%,rgba(5,17,22,.52) 63%,rgba(5,17,22,.08) 100%),
+  url('https://images.pexels.com/photos/26461489/pexels-photo-26461489.jpeg?auto=compress&cs=tinysrgb&w=2000') center/cover no-repeat}
+.member-overlay{position:absolute;inset:0;background:
+  radial-gradient(circle at 16% 18%,rgba(212,175,124,.09),transparent 26%),
+  linear-gradient(180deg,transparent 60%,rgba(4,12,16,.72) 100%);pointer-events:none}
+.member-header{position:relative;z-index:2;display:flex;justify-content:space-between;align-items:flex-start;gap:28px}
+.member-vanguard{display:inline-flex;align-items:center}
+.member-vanguard img{width:230px;height:auto;filter:brightness(0) invert(1)}
+.member-airsoft{display:flex;gap:12px;align-items:center;color:#fff;text-decoration:none;text-align:left}
+.member-airsoft strong{font-size:16px;line-height:.9;letter-spacing:.06em}
+.member-airsoft small{display:block;font-size:8px;letter-spacing:.13em;color:#d7c39b;margin-top:5px}
+.af-mark{width:40px;height:40px;border:1px solid rgba(219,176,74,.78);display:grid;place-items:center;position:relative;transform:rotate(45deg);border-radius:4px}
+.af-mark b{transform:rotate(-45deg);font-size:20px;color:#d9ad45}.af-mark i{position:absolute;width:16px;height:2px;background:#d9ad45;transform:rotate(-45deg)}
+.member-copy{position:relative;z-index:2;max-width:730px;margin-top:72px}
+.member-eyebrow{display:block;color:#d7aa48;letter-spacing:.23em;font-size:12px;font-weight:900;margin-bottom:18px}
+.member-copy h1{font-size:clamp(64px,7vw,112px);line-height:.82;margin:0 0 22px;letter-spacing:-.05em;color:#fff}
+.member-copy h1 em{font-style:normal;color:#d0a852}
+.member-copy>p{font-size:19px;line-height:1.48;color:#e2e7e8;max-width:700px}
+.member-actions{display:flex;gap:18px;flex-wrap:wrap;margin-top:30px}
+.member-btn{min-width:285px;display:grid;grid-template-columns:auto 1fr auto;gap:14px;align-items:center;text-decoration:none;color:#fff;border:1px solid #b68b32;border-radius:12px;padding:15px 18px;background:rgba(8,22,28,.72);backdrop-filter:blur(12px)}
+.member-btn.primary{background:linear-gradient(135deg,#efc46a,#c99c43);color:#111}
+.member-btn span b,.member-btn span small{display:block}.member-btn span b{font-size:15px;letter-spacing:.02em}.member-btn span small{font-size:11px;opacity:.72;margin-top:2px}
+.member-feature-strip{display:grid;grid-template-columns:repeat(5,1fr);border-top:1px solid rgba(255,255,255,.12);border-bottom:1px solid rgba(255,255,255,.12);background:#0b171b;padding:18px 28px}
+.member-feature-strip>div{display:flex;gap:12px;align-items:center;padding:4px 16px;border-right:1px solid rgba(255,255,255,.12)}
+.member-feature-strip>div:last-child{border-right:0}
+.member-feature-strip b,.member-feature-strip small{display:block}.member-feature-strip b{font-size:12px}.member-feature-strip small{font-size:10px;color:#9aa8ad;margin-top:3px}
+.member-icon{width:42px;height:42px;border:1px solid #b98e36;border-radius:50%;display:grid;place-items:center;color:#d8aa4e;flex:0 0 auto}
+.member-cards{display:grid;grid-template-columns:1fr 1fr 1fr;gap:18px;padding:28px 32px 20px;background:linear-gradient(180deg,#08151a,#061115)}
+.member-card{display:grid;grid-template-columns:40% 60%;min-height:230px;border:1px solid rgba(255,255,255,.14);border-radius:14px;overflow:hidden;background:#0b171b}
+.member-card-img{background-size:cover;background-position:center}
+.troop-six .member-card-img{background-image:url('https://images.pexels.com/photos/20335224/pexels-photo-20335224.jpeg?auto=compress&cs=tinysrgb&w=900')}
+.troop-seven .member-card-img{background-image:url('https://images.pexels.com/photos/26461489/pexels-photo-26461489.jpeg?auto=compress&cs=tinysrgb&w=900');filter:saturate(.75) brightness(.7)}
+.member-events .member-card-img{background-image:url('https://images.pexels.com/photos/163489/war-desert-guns-gunshow-163489.jpeg?auto=compress&cs=tinysrgb&w=900')}
+.member-card-copy{padding:24px}
+.member-card-copy h2{margin:14px 0 8px;color:#fff}.member-card-copy p{color:#c1c9cc;line-height:1.5;font-size:13px}
+.member-card-copy>a{display:inline-flex;align-items:center;gap:8px;margin-top:14px;padding:10px 14px;border:1px solid #b98e36;border-radius:9px;color:#e4bd69;font-size:11px;font-weight:900;text-decoration:none}
+.member-foot{display:flex;justify-content:space-between;gap:24px;align-items:center;padding:18px 34px 26px;background:#061115;color:#aeb8bc;font-size:11px}
+.member-foot span{display:flex;gap:8px;align-items:center}.member-foot b{color:#bd9340;letter-spacing:.16em;font-size:9px}
+.member-signup{min-height:100vh;display:grid;grid-template-columns:1.1fr .9fr;background:#08151a;color:#fff}
+.member-signup-visual{position:relative;min-height:100vh;background:
+  linear-gradient(90deg,rgba(4,15,20,.9),rgba(4,15,20,.25)),
+  url('https://images.pexels.com/photos/26461489/pexels-photo-26461489.jpeg?auto=compress&cs=tinysrgb&w=1800') center/cover no-repeat;padding:28px 42px}
+.member-signup-logo{position:relative;z-index:2}
+.member-signup-message{position:absolute;z-index:2;left:42px;right:42px;bottom:72px;max-width:650px}
+.member-signup-message>span{color:#d8ad51;font-weight:900;letter-spacing:.22em;font-size:11px}
+.member-signup-message h1{font-size:clamp(48px,6vw,88px);line-height:.86;margin:14px 0 18px;letter-spacing:-.04em}.member-signup-message h1 em{font-style:normal;color:#d6aa4b}
+.member-signup-message p{color:#e2e7e8;font-size:17px;line-height:1.5}
+.member-signup-form{background:#f4efe4;color:#15222a;padding:48px clamp(30px,5vw,76px);display:flex;flex-direction:column;justify-content:center}
+.member-signup-form .member-airsoft{color:#12212a;margin-bottom:46px}.member-signup-form .member-airsoft small{color:#80715a}
+.member-signup-form h2{font-size:52px;line-height:.9;margin:8px 0 12px;color:#102431}
+.member-signup-form>p{color:#64717a;line-height:1.55;margin-bottom:24px}
+.member-signup-form form{display:grid;gap:8px}.member-signup-form label{font-size:10px;font-weight:900;letter-spacing:.12em;color:#3d4b53;margin-top:8px}
+.member-signup-form input{width:100%;padding:13px 14px;border:1px solid #c7c2b6;border-radius:10px;background:#fff;font-size:15px}
+.member-submit{margin-top:12px;border:0;border-radius:10px;background:linear-gradient(135deg,#e6bb5f,#c89939);padding:14px 16px;font-weight:900;cursor:pointer;color:#111}
+.member-signup-form .notice{margin-top:18px;color:#6e756f}.member-signup-form .notice a{color:#0f4456;font-weight:800}
+@media(max-width:980px){
+  .member-header{align-items:center}.member-airsoft{display:none}.member-hero{padding:24px;min-height:640px;background-position:64% center}
+  .member-copy{margin-top:100px}.member-feature-strip{grid-template-columns:1fr 1fr}.member-feature-strip>div{border-right:0;border-bottom:1px solid rgba(255,255,255,.08);padding:12px}
+  .member-cards{grid-template-columns:1fr}.member-card{grid-template-columns:34% 66%}.member-foot{display:block}.member-foot b{display:block;margin-top:12px}
+  .member-signup{grid-template-columns:1fr}.member-signup-visual{min-height:52vh}.member-signup-form{min-height:48vh}
+}
+@media(max-width:640px){
+  .member-vanguard img{width:190px}.member-copy h1{font-size:56px}.member-copy>p{font-size:16px}.member-actions{display:grid}.member-btn{min-width:0;width:100%}
+  .member-feature-strip{grid-template-columns:1fr}.member-card{grid-template-columns:1fr}.member-card-img{min-height:180px}.member-cards{padding:18px}.member-signup-form h2{font-size:44px}
+}
