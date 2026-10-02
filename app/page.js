@@ -1,220 +1,101 @@
-import {Shell,Kicker,Btn,Icon,Metric} from './components';
+import {Shell,Kicker,Btn,Icon} from './components';
 
-const CONTROL='https://orvia.org.uk/vehicle-tailgate-control.jpg';
-const FLOOD='https://orvia.org.uk/flood-street-response.jpg';
-const COMMUNITY='https://orvia.org.uk/community-street-coordination.jpg';
-const MULTI='https://orvia.org.uk/multi-agency-planning.jpg';
-const TRACK='https://orvia.org.uk/track-field-coordination.jpg';
-const INCIDENT='https://orvia.org.uk/incident-room-planning.jpg';
+const HERO='https://orvia.org.uk/track-field-coordination.jpg';
+const TEAM='https://images.pexels.com/photos/20335224/pexels-photo-20335224.jpeg?auto=compress&cs=tinysrgb&w=1800';
+const EVENT='https://orvia.org.uk/multi-agency-planning.jpg';
+const CONTROL='https://orvia.org.uk/incident-room-planning.jpg';
 
 export const metadata={
-  title:'Operational command, tracking and field coordination',
-  description:'Vanguard Tactical brings command, tracking, communications, readiness and field coordination into one human-led operational picture.'
+  title:'Vanguard Tactical | Team. Train. Deploy. Together.',
+  description:'Teams, events, kit, training, ATAC, organisers and field experiences in one Vanguard Tactical platform.'
 };
 
-const Module=({num,title,text,href,icon})=><a className="content-card operational-card" href={href}>
-  <div className="module-number">{num}</div><Icon name={icon}/><h3>{title}</h3><p>{text}</p>
-  <span className="card-link">Explore <Icon name="arrow" size={16}/></span>
-</a>;
-
-const SectorCard=({image,kicker,title,text,href})=><a className="sector-card" href={href} style={{backgroundImage:`url('${image}')`}}>
-  <span className="sector-shade"></span>
-  <div className="sector-copy"><span>{kicker}</span><h3>{title}</h3><p>{text}</p></div>
-</a>;
+const Route=({n,title,text,tone,href})=><a href={href} className={'vf-route '+tone}><span>{n}</span><b>{title}</b><p>{text}</p></a>;
 
 export default function Home(){return <Shell>
-  <section className="alpha-banner">PRIVATE ALPHA — CAPABILITIES ARE LABELLED LIVE, IN DEVELOPMENT OR PLANNED</section>
-
-  <section className="hero operational-hero">
-    <div className="hero-visual" style={{backgroundImage:`url('${CONTROL}')`}}></div>
-    <div className="hero-grid">
-      <div className="hero-copy">
-        <div className="hero-logo-lockup" role="img" aria-label="Vanguard Tactical logo"></div>
-        <Kicker>Human-led operational command</Kicker>
-        <h1>See the operation.<br/><em>Command the response.</em></h1>
-        <p>Bring incidents, teams, locations, communications, actions and decisions into one operational picture. Vanguard supports the person in command — it does not replace them.</p>
-        <div className="hero-actions">
-          <Btn href="/platform">Explore the platform</Btn>
-          <Btn href="/atac" secondary>See field operations</Btn>
-        </div>
-        <div className="trust-strip">
-          <span>Human first</span><span>Sector-neutral</span><span>Modular</span><span>Evidence-led</span><span>Event-scoped field awareness</span>
-        </div>
-      </div>
-      <aside className="hero-panel">
-        <p className="panel-kicker">LIVE OPERATING PICTURE</p>
-        <div className="hero-inputs"><span>Incidents</span><span>Teams</span><span>Assets</span><span>Locations</span><span>Actions</span><span>Decisions</span></div>
-        <p className="panel-kicker second">HUMAN AUTHORITY CHAIN</p>
-        <p>AI can assist with missing information, context and recommendations. People authorise tasking, escalation and closure.</p>
-      </aside>
+  <section className="vf-hero">
+    <div className="vf-copy">
+      <Kicker>Teams · Events · Kit · Field Ops · Community</Kicker>
+      <h1>TEAM UP.<br/><em>GET OUT THERE.</em></h1>
+      <p>Vanguard Tactical brings the whole team experience into one place — people, private comms, events, kit, training, ATAC and after-action learning.</p>
+      <div className="vf-actions"><Btn href="/signup">Join Vanguard</Btn><Btn href="/workspace" secondary>Open Team Area</Btn></div>
+      <div className="vf-chips"><span>6 TROOP</span><span>7 TROOP</span><span>TEAM OS</span><span>ATAC</span><span>EVENTS</span><span>ARMOURY</span></div>
+    </div>
+    <div className="vf-visual" style={{backgroundImage:`url('${HERO}')`}}>
+      <div className="vf-glass top"><small>ONE ACCOUNT</small><b>Your team. Your kit. Your events.</b><span>Everything follows your member profile.</span></div>
+      <div className="vf-glass bottom"><small>TEAM EXPERIENCE</small><b>6 Troop + 7 Troop</b><span>Private comms · attendance · readiness · AAR</span></div>
     </div>
   </section>
 
-  <div className="metric-strip">
-    <Metric value="01" label="One operational picture"/>
-    <Metric value="02" label="One human authority chain"/>
-    <Metric value="03" label="One modular platform"/>
-    <Metric value="04" label="One accountable record"/>
-  </div>
+  <section className="vf-routes">
+    <Route n="01" title="TEAM" text="Roster, callsigns, roles and private team space." tone="blue" href="/workspace"/>
+    <Route n="02" title="EVENTS" text="Find it, plan it, attend it, review it." tone="teal" href="/events"/>
+    <Route n="03" title="KIT" text="Personal locker, team assets and readiness." tone="orange" href="/armoury"/>
+    <Route n="04" title="ATAC" text="Live field awareness for controlled events." tone="purple" href="/atac"/>
+    <Route n="05" title="ORGANISERS" text="Run better experiences with one operating picture." tone="coral" href="/organisers"/>
+  </section>
 
-  <section className="section">
-    <div className="section-inner">
-      <div className="section-head">
-        <div><Kicker>The platform</Kicker><h2>Not another isolated command-room screen.</h2></div>
-        <p className="section-intro">Vanguard joins the essential operating layers while keeping each module independently useful. Start with the field picture or build toward a fuller command, communications and assurance environment.</p>
-      </div>
-      <div className="clarity-grid">
-        <Module num="01" icon="shield" title="Command" text="Incidents, objectives, roles, sectors, actions, resource allocation, decisions, recovery and review." href="/platform#command"/>
-        <Module num="02" icon="map" title="Track / ATAC" text="Shared geospatial awareness for teams, assets, zones, hazards, tasking and field status." href="/atac"/>
-        <Module num="03" icon="radio" title="PTT & communications" text="Field and control-room communications designed to sit alongside operational workflows." href="/platform#comms"/>
-        <Module num="AI" icon="bolt" title="Intelligence support" text="Missing-information prompts, context and communications assistance behind explicit human authority gates." href="/platform#intelligence"/>
+  <section className="vf-story">
+    <div className="vf-section-head"><span>THE WHOLE JOURNEY</span><h2>Join it. Build it. Play it.</h2><p>Vanguard should feel like the home of the team, not a piece of admin software. The member journey starts with identity and belonging, then carries through kit, events, field activity and the stories that come afterwards.</p></div>
+    <div className="vf-story-grid">
+      <div className="vf-photo" style={{backgroundImage:`url('${TEAM}')`}}><div><small>TEAM FIRST</small><h3>Belong before you deploy.</h3></div></div>
+      <div className="vf-panel">
+        <span>MY VANGUARD</span>
+        <h3>One identity across the whole experience.</h3>
+        <div className="vf-flow"><b>CALLSIGN</b><i>→</i><b>TROOP</b><i>→</i><b>EVENT</b><i>→</i><b>KIT</b><i>→</i><b>AAR</b></div>
+        <p>Your account should know who you are, which troop you belong to, what you are attending, what you need and what still needs action.</p>
+        <Btn href="/workspace">Enter Team Area</Btn>
       </div>
     </div>
   </section>
 
-  <section className="section">
-    <div className="section-inner">
-      <div className="section-head">
-        <div><Kicker>Vanguard visual language</Kicker><h2>One mark. Distinct operating symbols.</h2></div>
-        <p className="section-intro">The full Vanguard mark remains the parent identity. Its individual elements can then signpost the part of the system the user is entering without creating separate brands.</p>
-      </div>
-      <div className="clarity-grid">
-        <div className="content-card"><Icon name="sword"/><h3>Excalibur / overview</h3><p>Used for Command, ATAC, operational overview and decisive action — the part of Vanguard that sees the whole picture and turns information into controlled action.</p></div>
-        <div className="content-card"><Icon name="helmet"/><h3>Gladiator / teams</h3><p>Used for teams, leadership, training, resilience and the sponsored 6 Troop / 7 Troop programme — controlled strength built through discipline and shared responsibility.</p></div>
-        <div className="content-card"><Icon name="journey"/><h3>The road / people</h3><p>Used for personal workspaces, welfare, progression, community and development — the route from where someone starts to where they want to be.</p></div>
-        <div className="content-card"><Icon name="target"/><h3>Full mark / Vanguard</h3><p>The complete symbol stays with the parent brand, bringing command, people, teams, readiness and field operations together under one identity.</p></div>
-      </div>
+  <section className="vf-band">
+    <div><small>PRIVATE COMMS</small><h3>Talk as a team.</h3><p>Vanguard HQ, 6 Troop, 7 Troop and event rooms with access controlled by membership.</p></div>
+    <div><small>EVENT RADAR</small><h3>Know what is next.</h3><p>Team dates and selected UK and international milsim events in one place.</p></div>
+    <div><small>READINESS</small><h3>Turn up prepared.</h3><p>Kit, attendance, actions, training and gaps surfaced before event day.</p></div>
+  </section>
+
+  <section className="vf-section">
+    <div className="vf-section-head"><span>THE VANGUARD ECOSYSTEM</span><h2>One account. More ways to use it.</h2><p>The team area is the front door, but Vanguard can grow with players, teams, organisers and sites without making people learn a different product every time.</p></div>
+    <div className="vf-eco-grid">
+      <a href="/workspace"><Icon name="users"/><small>TEAM OS</small><h3>Your private team home.</h3><p>Roster, callsigns, comms, events, actions and AAR.</p><b>OPEN TEAM OS →</b></a>
+      <a href="/events"><Icon name="calendar"/><small>EVENTS</small><h3>Everything for the next weekend.</h3><p>Dates, attendance, locations, kit, travel and event records.</p><b>EXPLORE EVENTS →</b></a>
+      <a href="/armoury"><Icon name="box"/><small>ARMOURY</small><h3>Your kit. Team kit. One view.</h3><p>Own it, issue it, reserve it and find the gaps.</p><b>OPEN ARMOURY →</b></a>
+      <a href="/atac"><Icon name="map"/><small>ATAC</small><h3>The live field layer.</h3><p>Approved locations, field state and participant awareness.</p><b>EXPLORE ATAC →</b></a>
+      <a href="/scenarios"><Icon name="target"/><small>SCENARIOS</small><h3>Build better game experiences.</h3><p>Scenario packs, event structure and reusable mission content.</p><b>VIEW SCENARIOS →</b></a>
+      <a href="/organisers"><Icon name="bolt"/><small>ORGANISERS</small><h3>Run the event from one picture.</h3><p>People, actions, field state, kit and post-event learning.</p><b>FOR ORGANISERS →</b></a>
     </div>
   </section>
 
-  <section className="section section-dark">
-    <div className="section-inner split">
-      <div>
-        <Kicker>One operating loop</Kicker>
-        <h2>From first report to accountable close-out.</h2>
-        <p>Capture the issue, establish the current situation, set objectives, see suitable resources, coordinate the field picture and retain the decision record through recovery and review.</p>
-        <div className="feature-list">
-          <div className="feature-row"><span className="num">01</span><b>Capture the issue and establish the situation</b><span>COMMAND</span></div>
-          <div className="feature-row"><span className="num">02</span><b>Set objectives, roles, sectors and actions</b><span>CONTROL</span></div>
-          <div className="feature-row"><span className="num">03</span><b>See resources, locations and operational status</b><span>TRACK</span></div>
-          <div className="feature-row"><span className="num">04</span><b>Coordinate communications and tasking</b><span>PTT</span></div>
-          <div className="feature-row"><span className="num">05</span><b>Retain decisions, events and learning</b><span>REVIEW</span></div>
-        </div>
-      </div>
-      <div className="image-panel" style={{backgroundImage:`url('${INCIDENT}')`}}>
-        <div className="image-caption"><span>CONTROL ROOM</span><b>HUMAN DECISION · DIGITAL PICTURE</b></div>
-      </div>
+  <section className="vf-feature">
+    <div className="vf-feature-image" style={{backgroundImage:`url('${EVENT}')`}}></div>
+    <div className="vf-feature-copy">
+      <Kicker>Events that feel connected</Kicker>
+      <h2>THE WEEKEND STARTS BEFORE THE GATE OPENS.</h2>
+      <p>Availability, team chat, kit checks, transport, event information and attendance should all be visible before anyone leaves home.</p>
+      <div className="vf-list"><span>◉ One-tap attendance</span><span>◉ Event-specific comms</span><span>◉ Kit requirements</span><span>◉ Approved locations</span><span>◉ Team actions</span><span>◉ After-action review</span></div>
+      <Btn href="/events">See Events</Btn>
     </div>
   </section>
 
-  <section className="section">
-    <div className="section-inner">
-      <div className="section-head">
-        <div><Kicker>Sector-neutral by design</Kicker><h2>Same operating logic. Different mission.</h2></div>
-        <p className="section-intro">Terminology, roles, resources and workflows can change without rebuilding the core platform. Vanguard is designed around operational coordination rather than one hobby or industry.</p>
-      </div>
-      <div className="sector-grid">
-        <SectorCard image={FLOOD} kicker="EMERGENCY & RESILIENCE" title="Fast-moving incidents" text="Shared situational awareness, resources, sectors, actions and decisions." href="/sectors#resilience"/>
-        <SectorCard image={COMMUNITY} kicker="SECURITY & EVENTS" title="Control without fragmentation" text="Bring security, stewards, medical, logistics and control into one operational picture." href="/sectors#security"/>
-        <SectorCard image={MULTI} kicker="UTILITIES · CARE · FIELD OPS" title="Operational coordination beyond blue light" text="Configure teams, locations, escalation, welfare, service continuity and field work." href="/sectors#field-ops"/>
-        <SectorCard image={TRACK} kicker="TRAINING & EXERCISES" title="Exercise the plan before it matters" text="Teams, roles, assets, comms, tasking and after-action learning in one record." href="/sectors#training"/>
-      </div>
+  <section className="vf-section vf-team">
+    <div className="vf-section-head"><span>6 TROOP + 7 TROOP</span><h2>Built with a real team, not imagined in a boardroom.</h2><p>6 Troop is Vanguard's primary sponsored airsoft team, with 7 Troop as its reserve and augmentation element. The team programme is the proving ground for the member experience.</p></div>
+    <div className="vf-team-grid">
+      <div><b>6T</b><h3>6 Troop</h3><p>Primary active team and proving environment.</p></div>
+      <div><b>7T</b><h3>7 Troop</h3><p>Reserve, augmentation and progression route.</p></div>
+      <div><b>HQ</b><h3>Vanguard HQ</h3><p>Shared community, admin and whole-team communications.</p></div>
     </div>
   </section>
 
-  <section className="section brand-story">
-    <div className="section-inner">
-      <div className="section-head">
-        <div><Kicker>The Vanguard mark</Kicker><h2>Strength with a destination.</h2></div>
-        <p className="section-intro">The Vanguard identity is built around disciplined strength, earned responsibility and the reason capability matters in the first place: helping people move through challenge toward confidence, community and the freedom to enjoy what comes next.</p>
-      </div>
-      <div className="brand-meaning-grid">
-        <div className="brand-meaning-card"><b>01 / EXCALIBUR</b><h3>Responsibility must be earned.</h3><p>The Excalibur reference represents purpose, judgement and the responsibility that comes with being trusted to lead.</p></div>
-        <div className="brand-meaning-card"><b>02 / GLADIATOR</b><h3>Controlled strength.</h3><p>The helmet represents resilience, preparation and the discipline to remain composed when the environment becomes demanding.</p></div>
-        <div className="brand-meaning-card"><b>03 / THE ROAD</b><h3>Progress is deliberate.</h3><p>The road is the journey from inexperience to capability: training, repetition, teamwork, responsibility and continuous improvement.</p></div>
-        <div className="brand-meaning-card"><b>04 / THE LONE FIGURE</b><h3>The destination is peace.</h3><p>The figure moving toward the light represents the human purpose behind the system: prepare well, do the difficult work, then have the space to live and enjoy the experience.</p></div>
-      </div>
-      <div className="brand-quote"><p>Vanguard is not about aggression. It is about being prepared enough, disciplined enough and connected enough to handle complexity — then move beyond it.</p></div>
-      <div className="brand-principles"><span>PEOPLE</span><span>TRAINING</span><span>COMMUNITY</span><span>REAL-WORLD SKILLS</span></div>
-      <div className="actions"><Btn href="/brand">Read the brand story</Btn></div>
-    </div>
+  <section className="vf-operating">
+    <div className="vf-operating-copy"><span>VANGUARD FOR ORGANISERS</span><h2>FROM BOOKINGS TO FIELD STATE TO AAR.</h2><p>Vanguard can support the people running the experience as well as the people playing it — keeping team, event and operational information connected without turning the hobby into corporate software.</p><div className="vf-actions"><Btn href="/organisers">For Organisers</Btn><Btn href="/platform" secondary>Explore Platform</Btn></div></div>
+    <div className="vf-operating-panel" style={{backgroundImage:`url('${CONTROL}')`}}><div><small>OPERATING PICTURE</small><b>PEOPLE · EVENTS · LOCATIONS · ACTIONS</b><span>Human-led. Event-scoped. Clear status.</span></div></div>
   </section>
 
-  <section className="section product-showcase">
-    <div className="section-inner">
-      <div className="section-head">
-        <div><Kicker>Operational picture</Kicker><h2>Command, track and communications in one view.</h2></div>
-        <p className="section-intro">The field picture should make uncertainty visible, not hide it. Position age, accuracy, role, tasking and incident context matter as much as a dot on a map.</p>
-      </div>
-      <div className="product-window">
-        <div className="product-window-nav">{['Command','Incidents','Teams','Assets','Track','Comms','Actions','Review'].map(x=><div key={x}>{x}</div>)}</div>
-        <div className="product-window-main">
-          <div className="product-window-top"><div><span className="eyebrow">LIVE OPERATING PICTURE</span><h3>Active response</h3></div><span className="status-badge">HUMAN CONTROL</span></div>
-          <div className="product-window-grid">
-            <div className="product-window-card"><b>6</b><span>resources available</span></div>
-            <div className="product-window-card"><b>4</b><span>currently tasked</span></div>
-            <div className="product-window-card"><b>3</b><span>open actions</span></div>
-          </div>
-          <div className="product-ui-list">
-            <div className="product-ui-row"><small>14:08</small><span>Situation update received</span><span>VERIFIED</span></div>
-            <div className="product-ui-row"><small>14:11</small><span>Sector Bravo resource request</span><span>REVIEW</span></div>
-            <div className="product-ui-row"><small>14:13</small><span>Field position status updated</span><span>LIVE</span></div>
-            <div className="product-ui-row"><small>14:15</small><span>Controller allocation decision</span><span>AUTHORISED</span></div>
-          </div>
-        </div>
-      </div>
-    </div>
+  <section className="vf-relationship">
+    <div><span>AIRSOFT FOUND + VANGUARD TACTICAL</span><h2>Two names. One connected airsoft ecosystem.</h2><p><strong>Airsoft Found</strong> is the friendly consumer front door for discovery, kit, builds, specialists, ranges and community. <strong>Vanguard Tactical</strong> is the specialist team, event and field-operations brand.</p></div>
+    <a href="https://airsoft-found.vercel.app/">EXPLORE AIRSOFT FOUND →</a>
   </section>
 
-  <section className="section">
-    <div className="section-inner split">
-      <div className="image-panel" style={{backgroundImage:`url('${TRACK}')`}}>
-        <div className="image-caption"><span>FIELD COORDINATION</span><b>TRACK · TASK · COMMUNICATE</b></div>
-      </div>
-      <div>
-        <Kicker>Field operations</Kicker>
-        <h2>ATAC becomes the field layer, not the hobby layer.</h2>
-        <p>Authorised participants deliberately join an operation, share field position while active, report ground information and give Control one common operational picture. The same field engine can support exercises, events, security activity, resilience operations and other controlled deployments.</p>
-        <div className="actions"><Btn href="/atac">Explore field operations</Btn></div>
-      </div>
-    </div>
-  </section>
-
-  <section className="section readiness-section">
-    <div className="section-inner">
-      <div className="section-head">
-        <div><Kicker>Operational readiness</Kicker><h2>Prepare the people, equipment and communications before deployment.</h2></div>
-        <p className="section-intro">Readiness is not a separate product. It is the state of the operation before tasking begins: who is available, what is ready, what is missing and what still needs approval.</p>
-      </div>
-      <div className="readiness-grid">
-        <div><Icon name="users"/><h3>People & roles</h3><p>Know who is available, assigned, qualified or awaiting confirmation.</p></div>
-        <div><Icon name="box"/><h3>Assets & equipment</h3><p>Track what is available, issued, missing or unavailable for the operation.</p></div>
-        <div><Icon name="radio"/><h3>Comms readiness</h3><p>Record operational communications status and known limitations.</p></div>
-        <div><Icon name="eye"/><h3>After action</h3><p>Keep observations, decisions, actions and lessons connected to the operation.</p></div>
-      </div>
-    </div>
-  </section>
-
-  <section className="section section-dark">
-    <div className="section-inner">
-      <div className="section-head">
-        <div><Kicker>Recreation & sport</Kicker><h2>Airsoft and paintball are use cases — not the Vanguard identity.</h2></div>
-        <div><p className="section-intro">The same participant, team, event, equipment, scenario and field-awareness model can support organised airsoft and paintball. They remain useful proving environments, but they now sit beneath the wider operational platform.</p><div className="actions"><Btn href="/sectors#sport">View sport use cases</Btn></div></div>
-      </div>
-    </div>
-  </section>
-
-  <section className="section">
-    <div className="section-inner">
-      <div className="section-heading"><Kicker>Capability truth</Kicker><h2>Useful operational support. Clear boundaries.</h2></div>
-      <div className="faq">
-        <details><summary>Is Vanguard an emergency-service dispatch platform?</summary><p>No. Vanguard can support operational awareness, exercises, field coordination and controlled tasking workflows, but it is not currently a certified CAD or guaranteed emergency-dispatch system.</p></details>
-        <details><summary>Does ATAC provide guaranteed tracking?</summary><p>No. Position quality depends on the device, browser state and connectivity. The product shows freshness and accuracy so operators can judge the information appropriately.</p></details>
-        <details><summary>Where do airsoft and paintball fit now?</summary><p>They sit within the Sport & Recreation sector as controlled field-operation use cases rather than the main Vanguard proposition.</p></details>
-        <details><summary>What is the core proposition?</summary><p>One human-led operational picture connecting incidents, people, assets, locations, communications, actions and decisions.</p></details>
-      </div>
-    </div>
-  </section>
-
-  <section className="band"><div className="band-inner"><h2>See the operation. Command the response.</h2><Btn href="/platform">Explore Vanguard</Btn></div></section>
+  <section className="band"><div className="band-inner"><h2>Team. Train. Deploy. Together.</h2><Btn href="/signup">Join Vanguard</Btn></div></section>
 </Shell>}
