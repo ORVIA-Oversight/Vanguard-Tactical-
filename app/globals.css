@@ -496,3 +496,71 @@ p{color:var(--muted);line-height:1.67}
 .vanguard-map-marker.is-delayed{background:#8A5A00;box-shadow:0 0 0 5px rgba(138,90,0,.18)}
 .vanguard-map-marker.is-user{background:#D4AF7C;color:#081722;box-shadow:0 0 0 5px rgba(212,175,124,.22)}
 @media(max-width:720px){.vanguard-live-map-head,.vanguard-live-map-foot{align-items:flex-start;flex-direction:column}.vanguard-live-map{height:380px}}
+
+
+/* 2026-10-02 Airsoft Found energy pass: brighter, fresher Vanguard without losing premium identity */
+body{background:#f7f4ec}
+.site-header{background:rgba(255,255,255,.95);box-shadow:0 8px 28px rgba(11,45,92,.05)}
+.btn{border-radius:12px;background:linear-gradient(135deg,#d4af7c,#f0b43f);border-color:transparent}
+.btn:hover{background:linear-gradient(135deg,#e2be8a,#f6c354)}
+.operational-hero{background:
+  radial-gradient(circle at 12% 10%,rgba(8,122,134,.12),transparent 30%),
+  linear-gradient(180deg,#ffffff 0%,#f7fbfb 74%,#f7f4ec 100%);
+  color:var(--navy);
+}
+.operational-hero .hero-visual{opacity:.16;mix-blend-mode:multiply}
+.operational-hero .hero-visual:after{background:linear-gradient(90deg,rgba(255,255,255,.98) 0%,rgba(255,255,255,.92) 48%,rgba(255,255,255,.54) 76%,rgba(255,255,255,.74) 100%)}
+.operational-hero .hero-grid{align-items:center}
+.operational-hero .hero-copy{max-width:900px}
+.operational-hero h1{color:var(--navy)}
+.operational-hero h1 em{color:var(--teal)}
+.operational-hero .hero-copy>p{color:#526b7a}
+.operational-hero .hero-panel{background:rgba(255,255,255,.9);border:1px solid #dce5eb;box-shadow:0 22px 60px rgba(31,71,106,.12)}
+.operational-hero .hero-logo-lockup{height:150px;width:min(410px,45vw)}
+.operational-hero .trust-strip span{background:#fff;color:#28465a;border-color:#d9e4e8}
+.operational-hero .btn-ghost{background:#fff;color:var(--navy);border-color:#cbd8e1}
+.alpha-banner{background:linear-gradient(90deg,#eef7f7,#fff5df);color:#38566a;border-bottom:1px solid #dce5eb}
+.metric-strip{gap:12px;border:0;padding:24px 0 8px}
+.metric{border:0;background:#fff;border-radius:18px;box-shadow:0 10px 28px rgba(31,71,106,.06)}
+.metric b{color:var(--teal)}
+.section{padding:92px 0}
+.content-card,.audience-card,.trust-card,.brand-meaning-card,.readiness-grid>div{
+  border-radius:22px;
+  border:1px solid #dce5eb;
+  box-shadow:0 14px 34px rgba(31,71,106,.06);
+  transition:transform .18s ease,box-shadow .18s ease,border-color .18s ease;
+}
+.content-card:hover,.brand-meaning-card:hover,.readiness-grid>div:hover{transform:translateY(-3px);box-shadow:0 18px 42px rgba(31,71,106,.10);border-color:#b9d6da}
+.operational-card:nth-child(1){border-top:5px solid #165da8}
+.operational-card:nth-child(2){border-top:5px solid #16a4ad}
+.operational-card:nth-child(3){border-top:5px solid #f0a51a}
+.operational-card:nth-child(4){border-top:5px solid #6a2e7c}
+.operational-card .module-number{color:#708296}
+.section-head h2,.section-heading h2{color:var(--navy)}
+.section-dark{background:linear-gradient(145deg,#0b2d5c,#123f6f)}
+.section-dark .image-panel{box-shadow:0 24px 65px rgba(0,0,0,.24)}
+.sector-card{border-radius:24px;box-shadow:0 18px 46px rgba(17,54,82,.13);min-height:420px}
+.sector-card:nth-child(1){outline:5px solid rgba(22,164,173,.08)}
+.sector-card:nth-child(2){outline:5px solid rgba(240,165,26,.08)}
+.sector-card:nth-child(3){outline:5px solid rgba(106,46,124,.07)}
+.sector-card:nth-child(4){outline:5px solid rgba(22,93,168,.07)}
+.brand-story{background:linear-gradient(180deg,#fff,#f3f8f8)}
+.brand-meaning-grid{gap:16px}
+.brand-meaning-card:nth-child(1){border-top:5px solid #165da8}
+.brand-meaning-card:nth-child(2){border-top:5px solid #16a4ad}
+.brand-meaning-card:nth-child(3){border-top:5px solid #f0a51a}
+.brand-meaning-card:nth-child(4){border-top:5px solid #6a2e7c}
+.product-showcase{background:linear-gradient(145deg,#0d315c,#153f68)}
+.product-window{border-radius:28px;box-shadow:0 30px 80px rgba(4,24,40,.26)}
+.readiness-section{background:linear-gradient(180deg,#eef6f7,#fff7e6)}
+.readiness-grid>div:nth-child(1){border-top:5px solid #165da8}
+.readiness-grid>div:nth-child(2){border-top:5px solid #16a4ad}
+.readiness-grid>div:nth-child(3){border-top:5px solid #f0a51a}
+.readiness-grid>div:nth-child(4){border-top:5px solid #6a2e7c}
+.band{background:linear-gradient(135deg,#e9f7f7,#fff3d8)}
+.band h2{color:var(--navy)}
+@media(max-width:900px){
+  .operational-hero .hero-visual{opacity:.11}
+  .operational-hero .hero-logo-lockup{width:min(360px,80vw)}
+  .metric-strip{gap:8px}
+}
