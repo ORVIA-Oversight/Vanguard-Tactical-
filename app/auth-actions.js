@@ -19,6 +19,7 @@ export async function signup(formData) {
   const email = String(formData.get('email') || '').trim();
   const password = String(formData.get('password') || '');
   const displayName = String(formData.get('name') || '').trim();
+  const mode = String(formData.get('mode') || 'owner');
   const headerList = await headers();
   const origin = headerList.get('origin') || process.env.NEXT_PUBLIC_SITE_URL || 'http://localhost:3000';
   const { data, error } = await supabase.auth.signUp({
@@ -26,11 +27,11 @@ export async function signup(formData) {
     password,
     options: {
       data: { display_name: displayName },
-      emailRedirectTo: `${origin}/auth/callback?next=/app/onboarding`
+      emailRedirectTo: `${origin}/auth/callback?next=${mode === 'member' ? '/join' : '/app/onboarding'}`
     }
   });
   if (error) redirect(`/signup?error=${encodeURIComponent(error.message)}`);
-  if (data.session) redirect('/onboarding');
+  if (data.session) redirect(mode === 'member' ? '/join' : '/onboarding');
   redirect('/login?message=Check%20your%20email%20to%20confirm%20your%20account');
 }
 
