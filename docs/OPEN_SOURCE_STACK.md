@@ -15,3 +15,5 @@ Vanguard remains the customer-facing application and source of identity/permissi
 
 ## Licence rule
 Permissive libraries may be linked directly where appropriate. Strong-copyleft or service-specific projects should stay as separately deployed components until licence review confirms the intended commercial use.
+
+Build verification is enforced by `.github/workflows/build.yml` on every push to `main`.
