@@ -1,4 +1,5 @@
 import {Shell,PageHero,Kicker,Icon,Btn} from '../components';
+import LiveFieldMap from './LiveFieldMap';
 
 const IMG='https://images.pexels.com/photos/20335223/pexels-photo-20335223.jpeg?cs=srgb&dl=pexels-gmb-visuals-564876670-20335223.jpg&fm=jpg';
 
@@ -43,15 +44,7 @@ export default function Page(){
           <span className="sim-badge">SIMULATED DATA</span>
         </div>
         <div className="atac-demo-grid">
-          <div className="atac-map">
-            <div className="map-grid"></div>
-            <span className="map-point p1 live"><b>A1</b><small>±8m</small></span>
-            <span className="map-point p2 live"><b>A2</b><small>±12m</small></span>
-            <span className="map-point p3 delayed"><b>B1</b><small>31s</small></span>
-            <span className="map-point p4 offline"><b>B2</b><small>2m 14s</small></span>
-            <span className="map-mark m1"><Icon name="target" size={18}/><small>GROUND MARK</small></span>
-            <span className="map-mark m2"><Icon name="map" size={18}/><small>RV</small></span>
-          </div>
+          <LiveFieldMap/>
           <div className="atac-side">
             <div className="status-stack">
               <div><span className="status-dot live-dot"></span><b>LIVE</b><strong>6</strong></div>
