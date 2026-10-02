@@ -1,4 +1,5 @@
 import './globals.css';
+import 'maplibre-gl/dist/maplibre-gl.css';
 import { Manrope, IBM_Plex_Mono } from 'next/font/google';
 
 const manrope = Manrope({ subsets:['latin'], variable:'--font-manrope', display:'swap' });
