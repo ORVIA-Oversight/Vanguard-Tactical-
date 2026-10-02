@@ -8,6 +8,7 @@ const memberLinks = [
   ['radio','/app/comms','Comms'],
   ['bolt','/team-signal','Team Signal'],
   ['calendar','/app/meetings','Meetings'],
+  ['target','/app/polls','Polls'],
   ['calendar','/app/events','Events'],
   ['box','/app/equipment','My Kit'],
   ['map','/app/atac','ATAC'],
