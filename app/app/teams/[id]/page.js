@@ -50,9 +50,9 @@ export default async function Page({params}){
             <input type="hidden" name="team_id" value={id}/>
             <input type="hidden" name="team_member_id" value={tm.id}/>
             <div className="team-member-title"><b>{p.display_name||'Member'}</b><small>{p.callsign||tm.callsign||'No callsign'} / {om?.status||'unknown'}</small></div>
-            <label>CALLSIGN<input name="callsign" defaultValue={tm.callsign||p.callsign||''}/></label>
+            <label>CALLSIGN<input name="callsign" defaultValue={tm.callsign||p.callsign||''} placeholder={team.code==='6T'?'G6A':team.code==='7T'?'G7A':'Assigned callsign'}/><small>{team.code==='6T'?'Use G6A, G6B, G6C…':team.code==='7T'?'Use G7A, G7B, G7C…':'Assigned by team admin'}</small></label>
             <label>ROLE<select name="role_title" defaultValue={tm.role_title||'Member'}>
-              <option>Member</option><option>Team Leader</option><option>Deputy</option><option>Squad Lead</option><option>Quartermaster</option><option>Medic</option><option>Comms</option><option>Reserve</option>
+              <option>Member</option><option>Team Admin</option><option>Team Leader</option><option>Deputy</option><option>Squad Lead</option><option>Quartermaster</option><option>Medic</option><option>Comms</option><option>Reserve</option>
             </select></label>
             <label className="check-label"><input name="is_primary" type="checkbox" defaultChecked={tm.is_primary}/> PRIMARY TEAM</label>
             <button className="btn btn-small">SAVE</button>
