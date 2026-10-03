@@ -5,5 +5,12 @@ export async function proxy(request) {
 }
 
 export const config = {
-  matcher: ['/app/:path*', '/invite/:path*']
+  matcher: [
+    '/app/:path*',
+    '/invite/:path*',
+    '/workspace/:path*',
+    '/team-os/:path*',
+    '/team-signal/:path*',
+    '/control/:path*'
+  ]
 };
