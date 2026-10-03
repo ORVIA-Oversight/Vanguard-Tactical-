@@ -3,7 +3,8 @@ import { updatePlayerProfile, addPlayerEquipment, uploadProfilePhoto } from '../
 
 const ROLE_OPTIONS=['Rifleman','Scout','Support Gunner','DMR','Sniper','Medic','Comms','Engineer','Grenadier','Team Leader','Deputy','Quartermaster','Driver','Other'];
 
-export default async function Page(){
+export default async function Page({searchParams}){
+  const params=await searchParams;
   const c = await getCurrentContext();
   const [{data: profile}, {data: kit}, {data: teamMemberships}] = await Promise.all([
     c.supabase.from('profiles').select('*').eq('id', c.userId).single(),
@@ -21,6 +22,8 @@ export default async function Page(){
   }
 
   return <section>
+    {params?.saved&&<div className="portal-save-banner">PROFILE SAVED</div>}
+    {params?.error&&<div className="portal-error-banner">{params.error}</div>}
     <div className="portal-head">
       <div><span className="eyebrow">PLAYER PASSPORT</span><h1>My profile</h1><p>Your private Vanguard player card: identity, troop, role, capability and personal airsoft kit.</p></div>
     </div>
