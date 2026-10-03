@@ -79,6 +79,13 @@ p{color:var(--muted);line-height:1.67}
   width:64px;height:64px;display:block;flex:none;
   background:url('/vanguard-logo-2026.svg') center/contain no-repeat;
 }
+.header-brand{min-width:250px}
+.header-brand-logo{
+  width:250px;
+  height:78px;
+  background-position:left center;
+  background-size:contain;
+}
 .brand-type{display:block}
 .brand-type b{display:block;font-size:1.32rem;letter-spacing:.035em;color:var(--navy);line-height:1}
 .brand-type small{display:block;font-size:.78rem;letter-spacing:.18em;color:var(--gold-strong);margin-top:5px}
@@ -421,7 +428,9 @@ p{color:var(--muted);line-height:1.67}
 @media(max-width:720px){
   .shell,.section-inner,.hero-grid,.metric-strip,.band-inner,.cta-grid{width:min(100% - 28px,1540px)}
   .section{padding:76px 0}
-  .site-header{min-height:70px;padding:10px 14px}
+  .site-header{min-height:78px;padding:8px 14px}
+  .header-brand{min-width:180px}
+  .header-brand-logo{width:180px;height:60px}
   .brand-type small{display:none}
   .header-actions .text-link{display:none}
   .btn-small{padding:0 13px;font-size:.76rem}
