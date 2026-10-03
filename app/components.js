@@ -26,7 +26,7 @@ export function Icon({ name, size = 22 }) {
 
 export function Header() {
   return <header className="site-header">
-    <Link href="/" className="brand" aria-label="Vanguard Tactical home"><span className="brand-logo" aria-hidden="true"></span><span className="brand-type"><b>Vanguard</b><small>Tactical</small></span></Link>
+    <Link href="/" className="brand header-brand" aria-label="Vanguard Tactical home"><span className="brand-logo header-brand-logo" aria-hidden="true"></span></Link>
     <nav className="desktop-nav" aria-label="Primary navigation">
       <Link href="/platform">Platform</Link>
       <Link href="/atac">Field Ops</Link>
