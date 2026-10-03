@@ -442,6 +442,14 @@ p{color:var(--muted);line-height:1.67}
   color:white;
 }
 .portal-nav .icon{color:#7ED0D7;flex:none}
+.portal-nav-section{
+  margin:16px 10px 6px;
+  font-family:var(--font-plex),"IBM Plex Mono",monospace;
+  font-size:.62rem;
+  letter-spacing:.14em;
+  font-weight:800;
+  color:#D4AF7C;
+}
 .portal-side-foot{
   margin-top:auto;
   padding-top:18px;
