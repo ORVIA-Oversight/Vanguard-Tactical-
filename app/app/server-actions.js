@@ -263,11 +263,123 @@ export async function updateTeamMember(formData) {
   const teamId = clean(formData.get('team_id'));
   const teamMemberId = clean(formData.get('team_member_id'));
   if (!teamId || !teamMemberId) return;
-  const allowedRoles = ['Member','Team Leader','Deputy','Squad Lead','Quartermaster','Medic','Comms','Reserve'];
+
+  const { data: team } = await ctx.supabase.from('teams').select('code').eq('id', teamId).maybeSingle();
+  const allowedRoles = ['Member','Team Admin','Team Leader','Deputy','Squad Lead','Quartermaster','Medic','Comms','Reserve'];
   const requestedRole = clean(formData.get('role_title'));
+  let callsign = clean(formData.get('callsign')).toUpperCase() || null;
+
+  if (callsign && ['6T','7T'].includes(team?.code || '')) {
+    const prefix = team.code === '6T' ? 'G6' : 'G7';
+    if (!new RegExp('^' + prefix + '[A-Z]{1,2}
+
+
+export async function linkAtacEvent(formData) {
+  const ctx = await getCurrentContext();
+  const eventId = clean(formData.get('event_id'));
+  const externalCode = clean(formData.get('external_event_code'));
+  const externalEventId = clean(formData.get('external_event_id'));
+  if (!eventId) return;
+  await ctx.supabase.from('atac_sessions').update({
+    external_event_code: externalCode || null,
+    external_event_id: externalEventId || null,
+    integration_state: externalCode || externalEventId ? 'linked' : 'planning',
+    last_sync_at: new Date().toISOString()
+  }).eq('event_id', eventId).eq('organization_id', ctx.organization.id);
+  revalidatePath('/app/events/' + eventId);
+  revalidatePath('/app/atac');
+}
+
+
+export async function prepareAtacRoster(formData) {
+  const ctx = await getCurrentContext();
+  const eventId = clean(formData.get('event_id'));
+  if (!eventId) return;
+
+  const { data: session } = await ctx.supabase
+    .from('atac_sessions')
+    .select('id')
+    .eq('event_id', eventId)
+    .eq('organization_id', ctx.organization.id)
+    .maybeSingle();
+  if (!session?.id) return;
+
+  const { data: attendance } = await ctx.supabase
+    .from('event_attendance')
+    .select('organization_member_id,status,assignment')
+    .eq('event_id', eventId)
+    .in('status', ['confirmed','checked_in']);
+
+  const memberIds = (attendance || []).map(x => x.organization_member_id);
+  const { data: members } = memberIds.length
+    ? await ctx.supabase.from('organization_members').select('id,user_id').in('id', memberIds)
+    : { data: [] };
+  const userIds = (members || []).map(x => x.user_id);
+  const { data: profiles } = userIds.length
+    ? await ctx.supabase.from('profiles').select('id,display_name,callsign').in('id', userIds)
+    : { data: [] };
+
+  const memberById = Object.fromEntries((members || []).map(x => [x.id, x]));
+  const profileById = Object.fromEntries((profiles || []).map(x => [x.id, x]));
+
+  await ctx.supabase.from('atac_roster_snapshots').delete().eq('atac_session_id', session.id);
+
+  const rows = (attendance || []).map(a => {
+    const member = memberById[a.organization_member_id];
+    const profile = profileById[member?.user_id] || {};
+    return {
+      atac_session_id: session.id,
+      event_id: eventId,
+      organization_member_id: a.organization_member_id,
+      callsign: profile.callsign || null,
+      display_name: profile.display_name || null,
+      assignment: a.assignment || null,
+      attendance_status: a.status,
+      prepared_by: ctx.userId
+    };
+  });
+
+  if (rows.length) await ctx.supabase.from('atac_roster_snapshots').insert(rows);
+
+  await ctx.supabase.from('atac_sessions').update({
+    roster_prepared_at: new Date().toISOString(),
+    integration_state: 'roster_ready'
+  }).eq('id', session.id);
+
+  revalidatePath('/app/events/' + eventId);
+  revalidatePath('/app/atac');
+}
+
+
+export async function voteTeamPoll(formData) {
+  const { supabase, userId } = await requireUser();
+  const pollId = clean(formData.get('poll_id'));
+  const optionId = clean(formData.get('option_id'));
+  if (!pollId || !optionId) return;
+
+  const { data: option } = await supabase
+    .from('team_poll_options')
+    .select('id,poll_id')
+    .eq('id', optionId)
+    .eq('poll_id', pollId)
+    .maybeSingle();
+
+  if (!option?.id) return;
+
+  await supabase.from('team_poll_votes').upsert({
+    poll_id: pollId,
+    option_id: optionId,
+    user_id: userId
+  }, { onConflict: 'poll_id,user_id' });
+
+  revalidatePath('/app/polls');
+}
+).test(callsign)) return;
+  }
+
   await ctx.supabase.from('team_members').update({
     role_title: allowedRoles.includes(requestedRole) ? requestedRole : 'Member',
-    callsign: clean(formData.get('callsign')) || null,
+    callsign,
     is_primary: formData.get('is_primary') === 'on'
   }).eq('id', teamMemberId).eq('team_id', teamId);
   revalidatePath('/app/teams');
