@@ -115,7 +115,7 @@ export async function acceptInvite(formData) {
 
 export async function updatePlayerProfile(formData) {
   const { supabase, userId } = await requireUser();
-  await supabase.from('profiles').update({
+  const { error } = await supabase.from('profiles').update({
     display_name: clean(formData.get('display_name')) || null,
     home_region: clean(formData.get('home_region')) || null,
     experience_level: clean(formData.get('experience_level')) || null,
@@ -131,7 +131,9 @@ export async function updatePlayerProfile(formData) {
     profile_visibility: clean(formData.get('profile_visibility')) || 'team',
     updated_at: new Date().toISOString()
   }).eq('id', userId);
+  if (error) redirect('/app/profile?error=' + encodeURIComponent(error.message));
   revalidatePath('/app/profile');
+  redirect('/app/profile?saved=1');
 }
 
 export async function uploadProfilePhoto(formData) {
