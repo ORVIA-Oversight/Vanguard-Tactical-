@@ -30,3 +30,6 @@ Never put a Supabase secret/service-role key in a `NEXT_PUBLIC_` variable.
 ## GitHub upload
 
 Upload the contents of this folder to the existing `vanguard-tactical` repository root. Do not nest this folder inside another directory. Vercel should detect Next.js automatically.
+
+
+<!-- redeploy: 2026-10-03 env sync -->
