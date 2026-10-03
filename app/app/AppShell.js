@@ -11,6 +11,7 @@ const memberLinks = [
   ['target','/app/polls','Polls'],
   ['calendar','/app/events','Events'],
   ['box','/app/equipment','My Kit'],
+  ['check','/app/readiness','Milsim Checklist'],
   ['map','/app/atac','ATAC'],
   ['play','/app/suggestions','Suggestions'],
   ['shield','/app/support','Support']
