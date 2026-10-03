@@ -117,13 +117,39 @@ export async function updatePlayerProfile(formData) {
   const { supabase, userId } = await requireUser();
   await supabase.from('profiles').update({
     display_name: clean(formData.get('display_name')) || null,
-    callsign: clean(formData.get('callsign')) || null,
     home_region: clean(formData.get('home_region')) || null,
     experience_level: clean(formData.get('experience_level')) || null,
+    preferred_role: clean(formData.get('preferred_role')) || null,
+    secondary_role: clean(formData.get('secondary_role')) || null,
+    player_status: clean(formData.get('player_status')) || 'active',
+    play_style: clean(formData.get('play_style')) || null,
+    radio_platform: clean(formData.get('radio_platform')) || null,
+    night_capable: formData.get('night_capable') === 'on',
+    availability_notes: clean(formData.get('availability_notes')) || null,
+    training_summary: clean(formData.get('training_summary')) || null,
     bio: clean(formData.get('bio')) || null,
     profile_visibility: clean(formData.get('profile_visibility')) || 'team',
     updated_at: new Date().toISOString()
   }).eq('id', userId);
+  revalidatePath('/app/profile');
+}
+
+export async function uploadProfilePhoto(formData) {
+  const { supabase, userId } = await requireUser();
+  const file = formData.get('avatar');
+  if (!(file instanceof File) || !file.size) return;
+  if (file.size > 5 * 1024 * 1024) return;
+  if (!['image/jpeg','image/png','image/webp'].includes(file.type)) return;
+  const ext = file.type === 'image/png' ? 'png' : file.type === 'image/webp' ? 'webp' : 'jpg';
+  const path = userId + '/avatar.' + ext;
+  const bytes = new Uint8Array(await file.arrayBuffer());
+  const { error } = await supabase.storage.from('profile-avatars').upload(path, bytes, {
+    contentType: file.type,
+    upsert: true
+  });
+  if (!error) {
+    await supabase.from('profiles').update({ avatar_path: path, updated_at: new Date().toISOString() }).eq('id', userId);
+  }
   revalidatePath('/app/profile');
 }
 
