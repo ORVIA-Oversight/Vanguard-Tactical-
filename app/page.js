@@ -22,6 +22,9 @@ export default function Home(){return <Shell>
       <div className="vf-chips"><span>6 TROOP</span><span>7 TROOP</span><span>TEAM OS</span><span>ATAC</span><span>EVENTS</span><span>ARMOURY</span></div>
     </div>
     <div className="vf-visual" style={{backgroundImage:`url('${HERO}')`}}>
+      <video className="vf-hero-video" autoPlay muted loop playsInline preload="metadata" poster={HERO} aria-label="Vanguard Tactical team video">
+        <source src="/team-video.mp4" type="video/mp4"/>
+      </video>
       <div className="vf-glass top"><small>ONE ACCOUNT</small><b>Your team. Your kit. Your events.</b><span>Everything follows your member profile.</span></div>
       <div className="vf-glass bottom"><small>TEAM EXPERIENCE</small><b>6 Troop + 7 Troop</b><span>Private comms · attendance · readiness · AAR</span></div>
     </div>
