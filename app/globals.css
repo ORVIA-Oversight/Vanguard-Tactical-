@@ -915,3 +915,7 @@ body{background:#f7f4ec}
 .player-avatar img{width:100%;height:100%;object-fit:cover}
 .profile-callsigns{margin-top:24px;padding-top:18px;border-top:1px solid #e4ddd1}
 .portal-form small{display:block;color:var(--muted);font-size:.72rem;line-height:1.4}
+
+.portal-save-banner,.portal-error-banner{margin-bottom:16px;padding:12px 14px;border-radius:12px;font-weight:800;letter-spacing:.04em}
+.portal-save-banner{background:#e9f4ef;color:#245744;border:1px solid #c8e2d5}
+.portal-error-banner{background:#fff0ee;color:#8a2f27;border:1px solid #efc9c4}
